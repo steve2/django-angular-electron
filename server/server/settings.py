@@ -61,7 +61,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(PROJECT_DIR, 'client/'),
+            os.path.join(PROJECT_DIR, 'client'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -133,6 +133,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(PROJECT_DIR, 'client', 'static')
+]
+
+# Destination directory for `collectstatic` command.
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Logging
 # https://github.com/Bouke/django-two-factor-auth/blob/master/example/settings.py
