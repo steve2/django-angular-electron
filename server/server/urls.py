@@ -19,10 +19,14 @@ from django.conf.urls import include
 from two_factor.urls import urlpatterns as tf_urls
 # from two_factor.gateways.twilio.urls import urlpatterns as tf_twilio_urls
 from two_factor.admin import AdminSiteOTPRequired
+from server.views import base
 
 admin.site.__class__ = AdminSiteOTPRequired
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'', include(tf_urls, 'two_factor'))
+    url(r'', include(tf_urls, 'two_factor')),
+
+    # AngularJS base template.
+    url(r'^.*$', base)
 ]
