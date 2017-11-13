@@ -1,1 +1,3 @@
 server/env/*
+server/db.sqlite3
+*.pyc
