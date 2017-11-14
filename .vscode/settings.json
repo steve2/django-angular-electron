@@ -1,0 +1,3 @@
+{
+    "python.venvPath": "${workingRoot}\\server\\env"
+}
