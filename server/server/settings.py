@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'django_otp',
     'django_otp.plugins.otp_static',
     'django_otp.plugins.otp_totp',
@@ -43,6 +44,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'rest_auth',
+    'allauth',
+    'allauth.account',
+    'rest_auth.registration'
 ]
 
 MIDDLEWARE = [
@@ -76,6 +80,13 @@ TEMPLATES = [
         },
     },
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        # 'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+   )  
+}
 
 WSGI_APPLICATION = 'server.wsgi.application'
 
