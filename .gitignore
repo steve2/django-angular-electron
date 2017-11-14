@@ -2,5 +2,6 @@ server/env/*
 server/db.sqlite3
 server/static/*
 client/node_modules/*
+client/static/bower_components/*
 *.pyc
 *.css
