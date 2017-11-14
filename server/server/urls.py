@@ -25,7 +25,7 @@ admin.site.__class__ = AdminSiteOTPRequired
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^rest_auth/', include('rest_auth.urls')),
+    url(r'^rest-auth/', include('rest_auth.urls')),
     url(r'', include(tf_urls, 'two_factor')),
 
     # AngularJS base template.
