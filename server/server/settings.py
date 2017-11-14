@@ -163,6 +163,7 @@ LOGGING = {
 # Two-Factor Authentication
 
 from django.core.urlresolvers import reverse_lazy
+from configparser import ConfigParser
 
 LOGIN_URL = reverse_lazy('two_factor:login')
 LOGIN_REDIRECT_URL = reverse_lazy('two_factor:profile')
@@ -173,8 +174,9 @@ FAKE_GATEWAY = 'two_factor.gateways.fake.Fake' # Gateway for development.
 TWO_FACTOR_CALL_GATEWAY = FAKE_GATEWAY
 TWO_FACTOR_SMS_GATEWAY = FAKE_GATEWAY
 
-# Twilio Settings
+config = ConfigParser()
+config.read(os.path.join(BASE_DIR, '2fa.settings'))
 
-TWILIO_CALLER_ID = '+14318004906'
-TWILIO_AUTH_TOKEN = 'f8c4586412e25051541edc90da3ebe97'
-TWILIO_ACCOUNT_SID = 'AC1e2403b66ea653c9d79b077fc55e7150'
+TWILIO_CALLER_ID = config.get('Twilio', 'CallerID')
+TWILIO_AUTH_TOKEN = config.get('Twilio', 'AuthToken')
+TWILIO_ACCOUNT_SID = config.get('Twilio', 'AccountSID')
