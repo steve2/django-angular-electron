@@ -1,0 +1,22 @@
+{
+  "name": "static",
+  "authors": [
+    "Steve <b0rg3r@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-ui-router": "^1.0.11",
+    "angular": "angularjs#^1.6.6"
+  }
+}
