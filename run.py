@@ -1,5 +1,8 @@
-from multiprocessing import Process
-import sys
+"""
+Runs the application server and client modules.
+"""
+
+from threading import Thread
 import os
 
 DEBUG_PORT = 8080
@@ -10,7 +13,13 @@ def RunServer():
 def RunElectron():
     os.system('client\\node_modules\\electron-prebuilt\\dist\\electron.exe client')
 
-server = Process(target=RunServer)
-electron = Process(target=RunElectron)
-server.start()
-electron.start()
+def Main():
+    serverThread = Thread(target=RunServer)
+    serverThread.start()
+    electronThread = Thread(target=RunElectron)
+    electronThread.start()
+    serverThread.join()
+    electronThread.join()
+
+if __name__ == '__main__':
+    Main()
