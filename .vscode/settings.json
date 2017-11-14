@@ -1,3 +1,4 @@
 {
-    "python.venvPath": "${workingRoot}\\server\\env"
+    "python.venvPath": "${workingRoot}\\server\\env",
+    "python.pythonPath": "${workingRoot\\server\\env\\Scripts\\python.exe"
 }
