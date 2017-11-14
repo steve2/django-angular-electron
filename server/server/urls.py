@@ -20,7 +20,7 @@ from django.conf.urls.static import static
 from two_factor.urls import urlpatterns as tf_urls
 # from two_factor.gateways.twilio.urls import urlpatterns as tf_twilio_urls
 from two_factor.admin import AdminSiteOTPRequired
-from server.views import base
+from server.views import IndexTemplate
 from server import settings
 
 admin.site.__class__ = AdminSiteOTPRequired
@@ -30,5 +30,5 @@ urlpatterns = [
     url(r'', include(tf_urls, 'two_factor')),
 
     # AngularJS base template.
-    url(r'^.*$', base)
+    url(r'^.*$', IndexTemplate.as_view())
 ]

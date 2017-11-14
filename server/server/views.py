@@ -1,8 +1,9 @@
 from django.shortcuts import render
+from django.views.generic import TemplateView
 
-def base(request):
+class IndexTemplate(TemplateView):
     """
-    Return the base HTML document.
+    The base template for our AngularJS application client.
 
     """
-    return render(request, 'index.html')
+    template_name = 'index.html'
