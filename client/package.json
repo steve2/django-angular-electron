@@ -1,7 +1,9 @@
 {
-    "name": "electron-application",
-
-    "version": "0.1.0",
-
-    "main": "main.js"
+  "name": "electron-application",
+  "version": "0.1.0",
+  "main": "main.js",
+  "dependencies": {
+    "electron-prebuilt": "^1.4.13",
+    "jquery": "^3.2.1"
+  }
 }
