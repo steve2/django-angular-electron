@@ -7,7 +7,7 @@ angular
 
 RootController.$inject = ["$timeout", "$element"];
 
-function RootController($timeout, $element) {
+function RootController ($timeout, $element) {
   var ct = this;
 
   // Reveal moment.js to templates.

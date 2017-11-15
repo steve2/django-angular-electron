@@ -7,7 +7,7 @@ angular
 
 Router.$inject = ["$stateProvider", "$urlRouterProvider", "$locationProvider"];
 
-function Router($stateProvider, $urlRouterProvider, $locationProvider) {
+function Router ($stateProvider, $urlRouterProvider, $locationProvider) {
 
   // Default state.
   $urlRouterProvider.otherwise("/");
@@ -21,7 +21,7 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
     })
     .state("root.home", {
       url: "/",
-      templateUrl: "static/states/Home/Root.html",
+      templateUrl: "static/states/Home/Home.html",
       controller: "Home as Home"
     });
 }
