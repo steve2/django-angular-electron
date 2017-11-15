@@ -15,10 +15,10 @@ Run.$inject = ["$rootScope", "$state", "$location", "$transitions", "$q"];
 
 // Application configuration.
 function Config($httpProvider, $resourceProvider, $locationProvider) {
-    $httpProvider.defaults.xsrfCookieName = "csrftoken";
-    $httpProvider.defaults.xsrfHeaderName = "X-CSRFToken";
-    $resourceProvider.defaults.stripTrailingSlashes = false;
-    $locationProvider.html5Mode({ enabled: true, requireBase: false });
+  $httpProvider.defaults.xsrfCookieName = "csrftoken";
+  $httpProvider.defaults.xsrfHeaderName = "X-CSRFToken";
+  $resourceProvider.defaults.stripTrailingSlashes = false;
+  $locationProvider.html5Mode({ enabled: true, requireBase: false });
 }
 
 // Application initialization.
