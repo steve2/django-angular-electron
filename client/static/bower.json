@@ -16,7 +16,13 @@
     "tests"
   ],
   "dependencies": {
-    "angular-ui-router": "^1.0.11",
-    "angular": "angularjs#^1.6.6"
+    "angular": "1.6.6",
+    "angular-resource": "1.6.6",
+    "angular-cookies": "1.6.6",
+    "angular-ui-router": "1.0.11",
+    "bootstrap": "v4.0.0-alpha.6",
+    "tether": "^1.4.1",
+    "jquery": "^3.2.1",
+    "moment": "^2.19.2"
   }
 }
