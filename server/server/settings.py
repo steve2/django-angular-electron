@@ -188,9 +188,12 @@ FAKE_GATEWAY = 'two_factor.gateways.fake.Fake' # Gateway for development.
 TWO_FACTOR_CALL_GATEWAY = FAKE_GATEWAY
 TWO_FACTOR_SMS_GATEWAY = FAKE_GATEWAY
 
-config = ConfigParser()
-config.read(os.path.join(BASE_DIR, '2fa.settings'))
+try:
+    config = ConfigParser()
+    config.read(os.path.join(BASE_DIR, '2fa.settings'))
 
-TWILIO_CALLER_ID = config.get('Twilio', 'CallerID')
-TWILIO_AUTH_TOKEN = config.get('Twilio', 'AuthToken')
-TWILIO_ACCOUNT_SID = config.get('Twilio', 'AccountSID')
+    TWILIO_CALLER_ID = config.get('Twilio', 'CallerID')
+    TWILIO_AUTH_TOKEN = config.get('Twilio', 'AuthToken')
+    TWILIO_ACCOUNT_SID = config.get('Twilio', 'AccountSID')
+except:
+    pass
