@@ -8,7 +8,7 @@ def build_bower():  # Build bower dependencies from bower.json.
     os.chdir(path % cwd)
     path = 'bower install'
     out = os.system(path)
-    print(path + ' [' + out + ']')
+    print(path + ' [' + str(out) + ']')
 
 
 def build_less():
