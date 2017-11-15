@@ -1,25 +1,30 @@
 <!DOCTYPE html>
-
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app="app">
 <head>
     <meta charset="utf-8" />
-    <!-- Style Dependencies -->
+    <link rel="stylesheet" href="static/bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="static/bower_components/tether/dist/css/tether.css" />
     <link rel="stylesheet" href="static/styles/site.css" />
-
     <title>App Title</title>
 </head>
 <body>
-
     <div ui-view></div>
 
-    <!-- Script Dependencies. -->
+    <script type="text/javascript" src="static/bower_components/moment/moment.js"></script>
+    <script type="text/javascript" src="static/bower_components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="static/bower_components/tether/dist/js/tether.js"></script>
+    <script type="text/javascript" src="static/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+
     <script type="text/javascript" src="static/bower_components/angular/angular.js"></script>
     <script type="text/javascript" src="static/bower_components/angular-resource/angular-resource.js"></script>
     <script type="text/javascript" src="static/bower_components/angular-cookies/angular-cookies.js"></script>
     <script type="text/javascript" src="static/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-
+    
+    <script type="text/javascript" src="static/electron.js"></script>
     <script type="text/javascript" src="static/config.js"></script>
     <script type="text/javascript" src="static/router.js"></script>
 
+    <script type="text/javascript" src="static/states/root.js"></script>
+    <script type="text/javascript" src="static/states/home/root.js"></script>
 </body>
 </html>
