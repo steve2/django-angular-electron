@@ -3,17 +3,23 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app="app">
 <head>
     <meta charset="utf-8" />
-    <!-- Add other stylesheets here. -->
+    <!-- Style Dependencies -->
     <link rel="stylesheet" href="static/styles/site.css" />
 
-    <title>App</title>
+    <title>App Title</title>
 </head>
 <body>
-    
+
     <div ui-view></div>
 
+    <!-- Script Dependencies. -->
     <script type="text/javascript" src="static/bower_components/angular/angular.js"></script>
+    <script type="text/javascript" src="static/bower_components/angular-resource/angular-resource.js"></script>
+    <script type="text/javascript" src="static/bower_components/angular-cookies/angular-cookies.js"></script>
     <script type="text/javascript" src="static/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+
+    <script type="text/javascript" src="static/config.js"></script>
+    <script type="text/javascript" src="static/router.js"></script>
 
 </body>
 </html>
