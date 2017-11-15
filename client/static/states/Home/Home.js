@@ -7,7 +7,7 @@ angular
 
 HomeController.$inject = ["$timeout", "$element"];
 
-function HomeController($timeout, $element) {
+function HomeController ($timeout, $element) {
   var ct = this;
 
   
