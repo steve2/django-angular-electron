@@ -1,8 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Anton|Passion+One');
 
+@text-color: #eee;
+@background: url("../images/dark_mosaic.png");
+@background-color: #2f323b;
+
 html,
 body {
     height: 100%;
     margin: 0;
-    // background: url("../images/dark_mosaic.png");
+    color: @text-color;
+    // background: @background;
+    background-color: @background-color;
 }
+
+@import "bootstrap.less";
