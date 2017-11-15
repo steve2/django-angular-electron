@@ -25,7 +25,15 @@ def _run_electron():
     os.system(path % cwd)
 
 
+def _build_client():
+    path = 'python %s\\client\\build.py'
+    os.system(path % cwd)
+
+
 def _main():
+    print('Building...')
+    _build_client()
+    print('Running...')
     server_thread = Thread(target=_run_server)
     server_thread.start()
     if not args.server:
