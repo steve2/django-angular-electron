@@ -16,12 +16,12 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
   $stateProvider
     .state("root", {
       abstract: true,
-      templateUrl: "static/states/root.html",
+      templateUrl: "static/states/Root.html",
       controller: "Root as Root"
     })
     .state("root.home", {
       url: "/",
-      templateUrl: "static/states/home/root.html",
+      templateUrl: "static/states/Home/Root.html",
       controller: "Home as Home"
     });
 }
