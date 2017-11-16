@@ -7,37 +7,37 @@ import argparse
 import sys
 import os
 
-cwd = os.path.dirname(os.path.realpath(__file__))
+# The directory of this file should be the root directory of the project.
+rootDirectory = os.path.dirname(os.path.realpath(__file__))
 
 
-def _setup_venv():
-    workingDirectory = '%s\\server' % cwd
+def _set_directory(subdir):
+    workingDirectory = '%s\\%s' % (rootDirectory, subdir)
     os.chdir(workingDirectory)
-    print('Set working directory to %s' % workingDirectory)
-    path = "virtualenv env"
-    out = os.system(path)
-    print(path + ' [' + str(out) + ']')
-    path = '%s\\server\\env\\Scripts\\python.exe -m pip install --upgrade pip' % cwd
-    out = os.system(path)
-    print(path + ' [' + str(out) + ']')
-    path = '%s\\server\\env\\Scripts\\pip.exe install -r requirements.txt' % cwd
-    out = os.system(path)
-    print(path + ' [' + str(out) + ']')
+    print('Current directory: %s' % workingDirectory)
 
 
-def _setup_node():
-    workingDirectory = '%s\\client' % cwd
-    os.chdir(workingDirectory)
-    print('Set working directory to %s' % workingDirectory)
-    path = "npm install"
-    out = os.system(path)
-    print(path + ' [' + str(out) + ']')
+def _run_command(command):
+    out = os.system(command)
+    print('%s [%d]' % (command, out))
+    if out is not 0: # Raise an exception if the command fails.
+        raise Exception('Command failed: %s' % command)
 
 
 def _main():
-    _setup_venv()
-    _setup_node()
-
+    try:
+        # Server setup.
+        _set_directory('server')
+        _run_command('virtualenv env')
+        _run_command('env\\Scripts\\python.exe -m pip install --upgrade pip')
+        _run_command('env\\Scripts\\pip.exe install -r requirements.txt')
+        _run_command('env\\Scripts\\python.exe manage.py migrate')
+        _run_command('env\\Scripts\\python.exe manage.py createsuperuser')
+        # Client setup.
+        _set_directory('client')
+        _run_command('npm install')
+    except Exception as exception:
+        print('Setup failed due to:\n\t%s' % str(exception))
 
 
 if __name__ == '__main__':
