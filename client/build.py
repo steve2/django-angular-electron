@@ -1,22 +1,25 @@
 import os
 
-cwd = os.path.dirname(os.path.realpath(__file__))
+clientDirectory = os.path.dirname(os.path.realpath(__file__))
 
 
-def build_bower():  # Build bower dependencies from bower.json.
-    path = '%s\\static'
-    os.chdir(path % cwd)
-    path = 'bower install'
-    out = os.system(path)
-    print(path + ' [' + str(out) + ']')
+def _set_directory(subdir):
+    workingDirectory = os.path.join(clientDirectory, subdir)
+    os.chdir(workingDirectory)
+    print('Current directory: %s' % workingDirectory)
 
 
-def build_less():
-    path = 'lessc %s/static/styles/site.less %s/static/styles/site.css'
-    out = os.system(path % (cwd, cwd))
-    print((path % (cwd, cwd)) + ' [' + str(out) + ']')
+def _run_command(command):
+    out = os.system(command)
+    print('%s [%d]' % (command, out))
+    if out is not 0: # Raise an exception if the command fails.
+        raise Exception('Command failed: %s' % command)
+
+
+def compile_less():
+    _set_directory(os.path.join(clientDirectory, 'static', 'styles'))
+    _run_command('lessc site.less site.css')
 
 
 if __name__ == '__main__':
-    build_bower()
-    build_less()
+    compile_less()
