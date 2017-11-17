@@ -23,7 +23,16 @@ function Config ($httpProvider, $resourceProvider, $locationProvider) {
 
 // Application initialization.
 function Run ($rootScope, $state, $location, $transitions, $q) {
-    
+  
+  // Template utility functions.
+  $rootScope.moment = moment;
+  $rootScope.link = $state.go;
+  $rootScope.isElectron = isElectron; // Returns true if Electron is running.
+  $rootScope.formatDate = function (str) { return moment(str).format('LL'); };
+  $rootScope.formatDateTime = function (str) { return moment(str).format('LLL'); };
+
+
+
 }
 
 })();
