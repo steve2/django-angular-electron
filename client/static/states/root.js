@@ -13,6 +13,9 @@ function RootController ($timeout, $element) {
   // Reveal moment.js to templates.
   ct.moment = moment;
 
+  // Reveal Electron functions.
+  ct.isElectron = isElectron;
+
 }
 
 })();
