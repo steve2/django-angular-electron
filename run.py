@@ -38,17 +38,14 @@ def _run_electron():
 
 
 def _build_client():
-    _set_directory('client')
-    _run_command('python build.py')
+    _run_command('python %s' % os.path.join(ROOT_DIR, 'client', 'build.py'))
 
 
 def _main():
     parser = argparse.ArgumentParser(description='Run the application.')
     parser.add_argument('--server', action='store_true')
     args = parser.parse_args()
-
     _build_client()
-
     server_thread = Thread(target=_run_server)
     server_thread.start()
     if not args.server:
