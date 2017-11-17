@@ -34,6 +34,11 @@ function Router ($stateProvider, $urlRouterProvider, $locationProvider) {
       url: "profile/",
       templateUrl: "static/states/Profile/Profile.html",
       controller: "Profile as Profile"
+    })
+    .state("root.signup", {
+      url: "signup/",
+      templateUrl: "static/states/Signup/Signup.html",
+      controller: "Signup as Signup"
     });
 }
 
