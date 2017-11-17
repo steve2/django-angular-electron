@@ -16,13 +16,24 @@ function Router ($stateProvider, $urlRouterProvider, $locationProvider) {
   $stateProvider
     .state("root", {
       abstract: true,
+      url: "/",
       templateUrl: "static/states/Root.html",
       controller: "Root as Root"
     })
     .state("root.home", {
-      url: "/",
+      url: "",
       templateUrl: "static/states/Home/Home.html",
       controller: "Home as Home"
+    })
+    .state("root.login", {
+      url: "login/",
+      templateUrl: "static/states/Login/Login.html",
+      controller: "Login as Login"
+    })
+    .state("root.profile", {
+      url: "profile/",
+      templateUrl: "static/states/Profile/Profile.html",
+      controller: "Profile as Profile"
     });
 }
 
