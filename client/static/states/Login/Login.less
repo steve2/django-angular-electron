@@ -1,9 +1,38 @@
 
-@header-height: 65px;
+@center-offset: 15vh;
+@input-text-size: 18pt;
+@input-text-background: darken(@background-color, 5%);
+@input-bottom-space: 15px;
+@input-width: 300px;
+@login-button-color: #0275d8;
+@login-button-color-front: #004279;
+@login-button-border-size: 5px;
+@login-button-depress-size: 3px;
+@login-button-depressed-size: (@login-button-border-size - @login-button-depress-size);
 
 #login-root {
-  .header {
-    background: darken(@background-color, 5%);
-    height: @header-height;
+  .body {
+    .canvas {
+      center {
+        vertical-align: middle;
+        .wrapper {
+          position: relative;
+          bottom: @center-offset;
+        }
+      }
+    }
+    input {
+      text-align: center;
+      max-width: @input-width;
+      margin-bottom: @input-bottom-space;
+      font-size: @input-text-size;
+      background: @input-text-background;
+    }
+    .control {
+      button.login {
+        font-size: (@input-text-size - 2pt);
+        padding: 15px 30px;
+      }
+    }
   }
 }

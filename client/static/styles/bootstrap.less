@@ -1,3 +1,15 @@
 // Custom theme for Bootstrap.
 // Should contain all necessary overrides for Bootstrap styles.
 
+.btn {
+  &:hover {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+}
+
+.form-control {
+  color: @text-color;
+  &:focus {
+    color: @text-color;
+  }
+}

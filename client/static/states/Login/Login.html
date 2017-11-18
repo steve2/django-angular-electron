@@ -1,20 +1,28 @@
 <div id="login-root">
-  <div class="header">
-    
-  </div>
-  <div class="body">
-    <div class="container">
-      <h1>Login</h1>
-
-      <div class="username">
-        <input type="text" class="form-control" ng-model="username" />
-      </div>
-      <div class="password">
-        <input type="password" class="form-control" ng-model="password" />
-      </div>
-      <button class="btn login" ng-click="login.login(username, password)">
-        Login
-      </button>
+  <div class="body table">
+    <div class="canvas tr">
+      <center class="td">
+        <div class="wrapper">
+          <h1>Login</h1>
+          <hr>
+          <div class="username">
+            <label>Username</label>
+            <input type="text" class="form-control" ng-model="username" />
+          </div>
+          <div class="password">
+            <label>Password</label>
+            <input type="password" class="form-control" ng-model="password" />
+          </div>
+          <div class="control">
+            <button type="submit" class="btn btn-primary login" ng-click="login.login(username, password)">
+              Login
+            </button>
+            <div class="help mt-4">
+              Don't have an account? Click <a ui-sref="root.signup">here</a> to register.
+            </div>
+          </div>
+        </div>
+      </center>
     </div>
   </div>
 </div>

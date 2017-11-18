@@ -14,6 +14,10 @@ body {
   color: @text-color;
   // background: @background;
   background-color: @background-color;
+
+  & > div {
+    height: 100%;
+  }
 }
 
 h1, h2, h3, h4, h5 {
@@ -23,6 +27,34 @@ h1, h2, h3, h4, h5 {
 button {
   &:hover {
     cursor: pointer;
+  }
+  &:active, &:focus {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+}
+
+hr {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+input,
+button {
+  color: @text-color;
+  &:focus {
+    border-color: #5cb3fd;
+  }
+}
+
+.table {
+  display: table;
+  width: 100%;
+  height: 100%;
+  & > .tr {
+    display: table-row;
+    & > .td {
+      display: table-cell;
+    }
   }
 }
 
