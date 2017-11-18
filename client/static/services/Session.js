@@ -9,13 +9,10 @@ Session.$inject = ['$rootScope', '$resource', '$cookies'];
 
 function Session ($rootScope, $resource, $cookies) {
 
-  var AUTH_TOKEN_COOKIE = 'AuthToken';
-  var token = $cookies.get(AUTH_TOKEN_COOKIE);
-
   var resources = { // API Endpoints.
-    login: $resource("/api/auth/login/", {}, { headers: { 'Authentication': 'Token ' + token } }),
-    logout: $resource("/api/auth/logout/", {}, { headers: { 'Authentication': 'Token ' + token } }),
-    current: $resource("/api/auth/user/", {}, { headers: { 'Authentication': 'Token ' + token } })
+    login: $resource("/api/auth/login/", {}, {}),
+    logout: $resource("/api/auth/logout/", {}, {}),
+    current: $resource("/api/auth/user/", {}, {})
   };
 
   return {
@@ -23,11 +20,13 @@ function Session ($rootScope, $resource, $cookies) {
       return resources.current.get();
     },
     login: function (username, password) {
-      var response = resources.login.save({ username: username, password: password });
+      var response = resources.login.save(
+        { username: username, password: password });
       response.$promise.then(
-        function (data) {
-          token = data.key;
-          $cookies.put(AUTH_TOKEN_COOKIE, token);
+        function (data) { // Retrieve User data object.
+          this.current().$promise.then(
+            function (data) { $rootScope.user = data; }
+          );
         },
         function (error) {}
       );
@@ -36,8 +35,7 @@ function Session ($rootScope, $resource, $cookies) {
       var response = resources.logout.save();
       response.$promise.then(
         function (data) {
-          token = null;
-          $cookies.remove(AUTH_TOKEN_COOKIE);
+          $rootScope.user = null;
         },
         function (errors) {}
       );
