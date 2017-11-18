@@ -10,7 +10,6 @@ angular
 function SignupController ($timeout, $element) {
   var ct = this;
 
-  
 
 }
 

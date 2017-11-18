@@ -1,0 +1,32 @@
+<div class="wrapper" ng-hide="loading">
+  <h1>Signup</h1>
+  <hr>
+  <div class="username">
+    <label>Username</label>
+    <input type="text" class="form-control" ng-model="username" />
+  </div>
+  <div class="email">
+    <label>Email</label>
+    <input type="text" class="form-control" ng-model="email" />
+  </div>
+  <div class="password">
+    <label>Password</label>
+    <input type="password" class="form-control" ng-model="password" />
+  </div>
+  <div class="confirm">
+    <label>Confirm Password</label>
+    <input type="password" class="form-control" ng-model="confirm" />
+  </div>
+  <div class="control">
+    <button type="submit" class="btn btn-primary signup" ng-click="signup()">
+      Signup
+    </button>
+    <div class="help mt-4">
+      Already have an account? Click <a ui-sref="root.login">here</a> to login.
+    </div>
+  </div>
+</div>
+<div class="wrapper" ng-show="loading">
+  <div class="mb-4">Signing in...</div>
+  <i class="fa fa-spinner fa-pulse fa-5x"></i>
+</div>

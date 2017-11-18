@@ -11,7 +11,7 @@ angular
   .run(Run);
 
 Config.$inject = ["$httpProvider", "$resourceProvider", "$locationProvider"];
-Run.$inject = ["$rootScope", "$state", "$location", "$transitions", "$q", "Session"];
+Run.$inject = ["$rootScope", "$state", "$location", "$transitions", "$q", "Auth"];
 
 function Config ($httpProvider, $resourceProvider, $locationProvider) {
   $httpProvider.defaults.xsrfCookieName = "csrftoken";
@@ -20,7 +20,7 @@ function Config ($httpProvider, $resourceProvider, $locationProvider) {
   $locationProvider.html5Mode({ enabled: true, requireBase: false });
 }
 
-function Run ($rootScope, $state, $location, $transitions, $q, Session) {  
+function Run ($rootScope, $state, $location, $transitions, $q, Auth) {  
   // These functions can be used by any AngularJS templates.
   $rootScope.moment = moment;
   $rootScope.link = $state.go;
@@ -28,23 +28,23 @@ function Run ($rootScope, $state, $location, $transitions, $q, Session) {
   $rootScope.formatDate = function (str) { return moment(str).format('LL'); };
   $rootScope.formatDateTime = function (str) { return moment(str).format('LLL'); };
 
-  var sessionLoading = $q.defer();
+  var initialLoading = $q.defer();
   $rootScope.user = null;
   // Load current session (if it exists).
-  Session.current().$promise.then(
+  Auth.current().$promise.then(
     function (data) {
       $rootScope.user = data;
-      sessionLoading.resolve();
+      initialLoading.resolve();
     },
     function (error) {
-      sessionLoading.resolve();
+      initialLoading.resolve();
     }
   );
   
   $transitions.onBefore({ to: "**" }, function ($state) {
     return $q(function (resolve, reject) {
-      // Wait for the session to load, only needs to be done once.
-      sessionLoading.promise.then(function() {
+      // Wait for the initial load, only needs to be done once.
+      initialLoading.promise.then(function() {
         if ($state.to().protected && !$rootScope.user)
           // Prevent protected states without registered user.
           resolve($state.router.stateService.target("root.login"));

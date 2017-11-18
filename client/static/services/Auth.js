@@ -3,11 +3,11 @@
 
 angular
   .module("app")
-  .factory("Session", Session);
+  .factory("Auth", AuthService);
 
-Session.$inject = ['$rootScope', '$resource', '$cookies', '$q'];
+AuthService.$inject = ['$rootScope', '$resource', '$cookies', '$q'];
 
-function Session ($rootScope, $resource, $cookies, $q) {
+function AuthService ($rootScope, $resource, $cookies, $q) {
 
   var resources = { // API Endpoints.
     login: $resource("/api/auth/login/", {}, {}),
