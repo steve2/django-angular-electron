@@ -21,7 +21,6 @@ function Config ($httpProvider, $resourceProvider, $locationProvider) {
 }
 
 function Run ($rootScope, $state, $location, $transitions, $q, Session) {  
-
   // These functions can be used by any AngularJS templates.
   $rootScope.moment = moment;
   $rootScope.link = $state.go;
@@ -29,37 +28,35 @@ function Run ($rootScope, $state, $location, $transitions, $q, Session) {
   $rootScope.formatDate = function (str) { return moment(str).format('LL'); };
   $rootScope.formatDateTime = function (str) { return moment(str).format('LLL'); };
 
-  // Initialize application session.
-  $rootScope.user = Session.current();
-  $rootScope.user.$promise.then(
+  var sessionLoading = $q.defer();
+  $rootScope.user = null;
+  // Load current session (if it exists).
+  Session.current().$promise.then(
     function (data) {
-      if ($state.current.registration)
-        $state.go("root.profile");
-      WatchTransitions();
+      $rootScope.user = data;
+      sessionLoading.resolve();
     },
-    function (errors) {
-      $rootScope.user = null;
-      let targetState = $state.get().filter(state => (state.url == $location.url()))[0];
-      if (targetState === undefined || targetState.protected)
-        $state.go("root.login");
-      WatchTransitions();
+    function (error) {
+      sessionLoading.resolve();
     }
   );
-
-  // Control access to specific states.
-  function WatchTransitions() {
-    $transitions.onBefore({ to: "**" }, function ($state) {
-      if ($state.to().protected && !$rootScope.user) {
-        $state.router.stateService.target("root.login");
-        return false;
-      }
-      else if ($rootScope.user && $state.to().registration) {
-        $state.router.stateService.target("root.home");
-        return false;
-      }
+  
+  $transitions.onBefore({ to: "**" }, function ($state) {
+    return $q(function (resolve, reject) {
+      // Wait for the session to load, only needs to be done once.
+      sessionLoading.promise.then(function() {
+        if ($state.to().protected && !$rootScope.user)
+          // Prevent protected states without registered user.
+          resolve($state.router.stateService.target("root.login"));
+        else if ($rootScope.user && $state.to().registration)
+          // Prevent registration states when registered.
+          resolve($state.router.stateService.target("root.dashboard"));
+        else
+          // Proceed normally.
+          resolve();
+      });
     });
-  }
-
+  });
 }
 
 })();
