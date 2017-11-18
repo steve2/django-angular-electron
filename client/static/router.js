@@ -33,13 +33,13 @@ function Router ($stateProvider, $urlRouterProvider, $locationProvider) {
     .state("root.signup", {
       url: "/signup/",
       templateUrl: "/static/states/signup/signup.html",
-      controller: "SignupController",
+      controller: "SignupController as signup",
       registration: true
     })
     .state("root.login", {
       url: "/login/",
       templateUrl: "/static/states/login/login.html",
-      controller: "LoginController",
+      controller: "LoginController as login",
       registration: true
     })
     .state("root.dashboard", {
