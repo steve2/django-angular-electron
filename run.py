@@ -11,12 +11,6 @@ DEBUG_PORT = 8080
 ROOT_DIR = os.path.dirname(os.path.realpath(__file__))
 
 
-def _set_directory(subdir):
-    working_dir = os.path.join(ROOT_DIR, subdir)
-    os.chdir(working_dir)
-    print('Current directory: %s' % working_dir)
-
-
 def _run_command(command):
     out = os.system(command)
     print('%s [%d]' % (command, out))
@@ -25,16 +19,17 @@ def _run_command(command):
 
 
 def _run_server():
-    _set_directory('server')
-    python_path = os.path.join('env', 'Scripts', 'python.exe')
-    _run_command('%s manage.py runserver %s' % (python_path, DEBUG_PORT))
+    python_path = os.path.join(
+        ROOT_DIR, 'server', 'env', 'Scripts', 'python.exe')
+    manage_path = os.path.join(ROOT_DIR, 'server', 'manage.py')
+    _run_command('%s %s runserver %s' % (python_path, manage_path, DEBUG_PORT))
 
 
 def _run_electron():
-    _set_directory('client')
     electron_path = os.path.join(
-        'node_modules', 'electron-prebuilt', 'dist', 'electron.exe')
-    _run_command('%s .' % electron_path)
+        ROOT_DIR, 'client', 'node_modules', 'electron-prebuilt', 'dist', 'electron.exe')
+    application_path = os.path.join(ROOT_DIR, 'client')
+    _run_command('%s %s' % (electron_path, application_path))
 
 
 def _build_client():
