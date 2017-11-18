@@ -3,7 +3,7 @@
 
 angular
   .module("app")
-  .controller("Signup", SignupController);
+  .controller("SignupController", SignupController);
 
   SignupController.$inject = ["$timeout", "$element"];
 

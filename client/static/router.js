@@ -28,30 +28,30 @@ function Router ($stateProvider, $urlRouterProvider, $locationProvider) {
     .state("root", {
       abstract: true,
       url: "/",
-      templateUrl: "static/states/Root.html",
-      controller: "Root as Root"
+      templateUrl: "static/states/root.html",
+      controller: "RootController as root"
     })
     .state("root.home", {
       url: "",
-      templateUrl: "static/states/Home/Home.html",
-      controller: "Home as Home"
+      templateUrl: "static/states/home/home.html",
+      controller: "HomeController as home"
     })
     .state("root.signup", {
       url: "signup/",
-      templateUrl: "static/states/Signup/Signup.html",
-      controller: "Signup as Signup",
+      templateUrl: "static/states/signup/signup.html",
+      controller: "SignupController",
       registration: true
     })
     .state("root.login", {
       url: "login/",
-      templateUrl: "static/states/Login/Login.html",
-      controller: "Login as Login",
+      templateUrl: "static/states/login/login.html",
+      controller: "LoginController",
       registration: true
     })
     .state("root.profile", {
       url: "profile/",
-      templateUrl: "static/states/Profile/Profile.html",
-      controller: "Profile as Profile",
+      templateUrl: "static/states/profile/profile.html",
+      controller: "ProfileController as profile",
       protected: true
     });
 }

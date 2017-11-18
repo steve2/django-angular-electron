@@ -3,7 +3,7 @@
 
 angular
   .module("app")
-  .controller("Profile", ProfileController);
+  .controller("ProfileController", ProfileController);
 
 ProfileController.$inject = ["$timeout", "$element"];
 

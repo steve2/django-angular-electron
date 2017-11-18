@@ -3,7 +3,7 @@
 
 angular
   .module("app")
-  .controller("Home", HomeController);
+  .controller("HomeController", HomeController);
 
 HomeController.$inject = ["$timeout", "$element"];
 

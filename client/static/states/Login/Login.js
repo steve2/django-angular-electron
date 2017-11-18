@@ -3,7 +3,7 @@
 
 angular
   .module("app")
-  .controller("Login", LoginController);
+  .controller("LoginController", LoginController);
 
   LoginController.$inject = ["$timeout", "$element"];
 
