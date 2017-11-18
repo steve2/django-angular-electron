@@ -4,19 +4,26 @@
 @background: url("../images/dark_mosaic.png");
 @background-color: #2f323b;
 
+@active-color: #248ce7;
 
 
 html,
 body {
-    height: 100%;
-    margin: 0;
-    color: @text-color;
-    // background: @background;
-    background-color: @background-color;
+  height: 100%;
+  margin: 0;
+  color: @text-color;
+  // background: @background;
+  background-color: @background-color;
 }
 
 h1, h2, h3, h4, h5 {
-    font-weight: 100;    
+  font-weight: 100;    
+}
+
+button {
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 @import "bootstrap.less";
