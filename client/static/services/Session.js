@@ -5,9 +5,9 @@ angular
   .module("app")
   .factory("Session", Session);
 
-Session.$inject = ['$rootScope', '$resource', '$cookies'];
+Session.$inject = ['$rootScope', '$resource', '$cookies', '$q'];
 
-function Session ($rootScope, $resource, $cookies) {
+function Session ($rootScope, $resource, $cookies, $q) {
 
   var resources = { // API Endpoints.
     login: $resource("/api/auth/login/", {}, {}),
@@ -22,14 +22,23 @@ function Session ($rootScope, $resource, $cookies) {
     login: function (username, password) {
       var response = resources.login.save(
         { username: username, password: password });
+      var deferred = $q.defer();
       response.$promise.then(
         function (data) { // Retrieve User data object.
-          this.current().$promise.then(
-            function (data) { $rootScope.user = data; }
+          resources.current.get().$promise.then(
+            function (data) { 
+              $rootScope.user = data; 
+              deferred.resolve(data);
+            },
+            function (error) {
+              deferred.reject(error);
+            }
           );
         },
         function (error) {}
       );
+      deferred.$promise = deferred.promise;
+      return deferred;
     },
     logout: function () {
       var response = resources.logout.save();
@@ -39,6 +48,7 @@ function Session ($rootScope, $resource, $cookies) {
         },
         function (errors) {}
       );
+      return response;
     }
   };
 
