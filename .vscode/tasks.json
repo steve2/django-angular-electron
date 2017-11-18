@@ -4,13 +4,20 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Django",
+            "label": "Run Application",
             "type": "shell",
-            "command": "server\\env\\Scripts\\python.exe",
+            "command": "python",
             "args": [
-                "server\\manage.py",
-                "runserver",
-                "8080"
+                "run.py"
+            ]
+        },
+        {
+            "label": "Run Server",
+            "type": "shell",
+            "command": "python",
+            "args": [
+                "run.py",
+                "--server"
             ]
         }
     ]
