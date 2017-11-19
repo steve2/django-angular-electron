@@ -89,7 +89,12 @@ REST_FRAMEWORK = {
    )
 }
 
+# Django REST Auth Settings.
 ACCOUNT_EMAIL_VERIFICATION = 'none'
+REST_AUTH_SERIALIZERS = {
+    'USER_DETAILS_SERIALIZER': 'server.overrides.serializers.UserDetailsSerializer'
+}
+
 
 WSGI_APPLICATION = 'server.wsgi.application'
 
