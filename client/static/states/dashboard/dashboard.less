@@ -3,12 +3,25 @@
 @top-bg-stripe-2: #252525;
 
 #dashboard-root {
-  .fa-user-circle {
-    font-size: 20vmin;
-    text-shadow: 0 5px 15px black;
-  }
   .top {
     .bg-striped(@top-bg-stripe-1, @top-bg-stripe-2);
+    .avatar {
+      .fa-user-circle {
+        font-size: 101pt;
+        text-shadow: 0 5px 15px black;
+        @media (max-width: 768px) {
+          font-size: 80pt;
+        }
+        @media (max-width: 512px) {
+          font-size: 64pt;
+        }
+      }
+      .frame {
+        .td {
+          vertical-align: middle;
+        }
+      }
+    }
   }
   .you {
     font-size: 20pt;

@@ -1,26 +1,40 @@
 <div id="dashboard-root">
   <div class="content" ng-hide="dashboard.loading">
     <div class="top pt-2">
-      <center>
-        <i class="fa fa-user-circle"></i>
-      </center>
       <div class="container">
-        <h1>{{ user.username }} 
-          <span class="you absolute">
-            <span class="relative">
-              (you)
-            </span>
-          </span>
-        </h1>
-        <h5 class="mb-2 text-info">Peon</h5>
-        <h5>Joined {{ formatDate(user.date_joined) }}</h5>
-        <h5 class="mb-0 pb-2" ng-hide="user.profile.location">Location unknown</h5>
-        <h5 class="mb-0 pb-2" ng-show="user.profile.location">From {{ user.profile.location }}</h5>
+        <div class="row">
+          <div class="col-3 avatar">
+            <div class="frame table">
+              <div class="tr">
+                <div class="td">
+                  <center>
+                    <i class="fa fa-user-circle"></i>
+                  </center>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-9 information">
+            <h1>{{ user.username }} 
+              <span class="you absolute">
+                <span class="relative">
+                  (you)
+                </span>
+              </span>
+            </h1>
+            <h5 class="mb-2 text-info smallcaps">{{ user.profile.rank }}</h5>
+            <h5>Joined {{ formatDate(user.date_joined) }}</h5>
+            <h5 class="mb-0 pb-2" ng-hide="user.profile.location">Location unknown</h5>
+            <h5 class="mb-0 pb-2" ng-show="user.profile.location">From {{ user.profile.location }}</h5>
+            <h5 class="mb-0 pb-2" ng-show="user.profile.birthdate">Born {{ moment(user.profile.birthdate).fromNow() }}</h5>
+          </div>
+        </div>
       </div>
     </div>
     <hr class="mt-0">
     <div class="container">
-      <h1>Welcome.</h1>
+      <h3>About</h3>
+      <p>{{ user.profile.about }}</p>
       You can <a href="#" ng-click="dashboard.logout()">logout</a> when you leave.
     </div>
   </div>
