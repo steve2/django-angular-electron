@@ -1,24 +1,34 @@
 <div class="wrapper" ng-hide="loading">
   <h1>Signup</h1>
   <hr>
+  <div class="errors mb-4" ng-show="error.non_field_errors">
+    <div class="error text-danger" ng-repeat="message in error.non_field_errors">
+      {{ message }}
+    </div>
+  </div>
   <div class="username">
-    <label>Username</label>
+    <label ng-class="{ 'text-danger': error.username }">Username</label>
+    <label class="text-danger" ng-show="error.username">({{ error.username[0] }})</label>
     <input type="text" class="form-control" ng-model="username" />
   </div>
   <div class="email">
-    <label>Email</label>
+    <label ng-class="{ 'text-danger': error.email }">Email</label>
+    <label class="text-danger" ng-show="error.email">({{ error.email[0] }})</label>
     <input type="text" class="form-control" ng-model="email" />
   </div>
   <div class="password">
-    <label>Password</label>
+    <label ng-class="{ 'text-danger': error.password1 }">Password</label>
+    <label class="text-danger" ng-show="error.password1">({{ error.password1[0] }})</label>
     <input type="password" class="form-control" ng-model="password" />
   </div>
   <div class="confirm">
-    <label>Confirm Password</label>
+    <label ng-class="{ 'text-danger': error.password2 }">Confirm Password</label>
+    <label class="text-danger" ng-show="error.password2">({{ error.password2[0] }})</label>
     <input type="password" class="form-control" ng-model="confirm" />
   </div>
   <div class="control">
-    <button type="submit" class="btn btn-primary signup" ng-click="signup()">
+    <button type="submit" class="btn btn-primary signup" 
+            ng-click="signup(username, email, password, confirm)">
       Signup
     </button>
     <div class="help mt-4">
@@ -27,6 +37,6 @@
   </div>
 </div>
 <div class="wrapper" ng-show="loading">
-  <div class="mb-4">Signing in...</div>
+  <div class="mb-4">Creating user...</div>
   <i class="fa fa-spinner fa-pulse fa-5x"></i>
 </div>

@@ -1,12 +1,19 @@
 <div class="wrapper" ng-hide="loading">
   <h1>Login</h1>
   <hr>
+  <div class="errors mb-4" ng-show="error.non_field_errors">
+    <div class="error text-danger" ng-repeat="message in error.non_field_errors">
+      {{ message }}
+    </div>
+  </div>
   <div class="username">
-    <label>Username</label>
+    <label ng-class="{ 'text-danger': error.username }">Username</label>
+    <label class="text-danger" ng-show="error.username">({{ error.username[0] }})</label>
     <input type="text" class="form-control" ng-model="username" />
   </div>
   <div class="password">
-    <label>Password</label>
+    <label ng-class="{ 'text-danger': error.password }">Password </label>
+    <label class="text-danger" ng-show="error.password">({{ error.password[0] }})</label>
     <input type="password" class="form-control" ng-model="password" />
   </div>
   <div class="control">

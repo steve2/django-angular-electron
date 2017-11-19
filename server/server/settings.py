@@ -89,6 +89,8 @@ REST_FRAMEWORK = {
    )
 }
 
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+
 WSGI_APPLICATION = 'server.wsgi.application'
 
 

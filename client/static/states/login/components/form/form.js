@@ -13,15 +13,20 @@ function LoginForm () {
   function controller ($scope, $state, $stateParams, Auth) {
     var ct = $scope;
     ct.loading = false;
+    ct.error = null;
 
     ct.login = function (username, password) {
       ct.loading = true;
       Auth.login(username, password).$promise.then(
         function (data) {
-          ct.loading = false;
+          // Don't stop "loading" until the new state is loaded.
           $state.transitionTo($state.current, $stateParams, { reload: true });
+        },
+        function (error) {
+          ct.loading = false;
+          ct.error = error.data;
         }
-      )
+      );
     };
   }
 
