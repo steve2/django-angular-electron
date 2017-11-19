@@ -3,7 +3,7 @@
 
 .btn {
   &:hover {
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
   }
 }
 
@@ -26,4 +26,18 @@
 .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-auto {
   padding-right: 0px;
   padding-left: 0px;
+}
+
+.dropdown-menu {
+  color: @text-color;
+  background: darken(@background-color, 5%);
+  a {
+    color: @text-color;
+  }
+  .dropdown-item {
+    &:hover {
+      background: #3e424d;
+      cursor: pointer;
+    }
+  }
 }
