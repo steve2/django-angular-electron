@@ -20,6 +20,7 @@ from two_factor.urls import urlpatterns as tf_urls
 # from two_factor.gateways.twilio.urls import urlpatterns as tf_twilio_urls
 from two_factor.admin import AdminSiteOTPRequired
 from server.views import IndexTemplate
+from server.views import FacebookLogin
 
 admin.site.__class__ = AdminSiteOTPRequired
 
@@ -28,6 +29,7 @@ urlpatterns = [
     url(r'^api/auth/', include('rest_auth.urls')),
     url(r'^api/auth/register/', include('rest_auth.registration.urls')),
     url(r'', include(tf_urls, 'two_factor')),
+    url(r'^api/auth/facebook/$', FacebookLogin.as_view()),
     # AngularJS base template.
     url(r'^.*$', IndexTemplate.as_view())
 ]
