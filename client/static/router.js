@@ -21,7 +21,7 @@ Router.$inject = ["$stateProvider", "$urlRouterProvider", "$locationProvider"];
 function Router ($stateProvider, $urlRouterProvider, $locationProvider) {
 
   // Default state.
-  $urlRouterProvider.otherwise("/");
+  $urlRouterProvider.otherwise("/dashboard/");
 
   // State definitions.
   $stateProvider
@@ -43,7 +43,7 @@ function Router ($stateProvider, $urlRouterProvider, $locationProvider) {
       registration: true
     })
     .state("root.dashboard", {
-      url: "/",
+      url: "/dashboard/",
       templateUrl: "/static/states/dashboard/dashboard.html",
       controller: "DashboardController as dashboard",
       protected: true

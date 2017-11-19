@@ -1,11 +1,21 @@
 
+@top-bg-stripe-1: #222;
+@top-bg-stripe-2: #252525;
+
 #dashboard-root {
-  .body {
-    .container {
-      padding-top: 20px;
-      .fa {
-        font-size: 25vmin;
-      }
+  .fa-user-circle {
+    font-size: 20vmin;
+    text-shadow: 0 5px 15px black;
+  }
+  .top {
+    .bg-striped(@top-bg-stripe-1, @top-bg-stripe-2);
+  }
+  .you {
+    font-size: 20pt;
+    color: darken(@text-color, 40%);
+    .relative {
+      left: 5px;
+      top: 10px;
     }
   }
   .loading.table {
