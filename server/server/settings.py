@@ -47,7 +47,10 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'rest_auth.registration',
-    'profiles',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.twitch',
+    'profiles'
 ]
 
 MIDDLEWARE = [
