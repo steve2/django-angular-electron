@@ -3,8 +3,10 @@
 @text-color: #eee;
 @background: url("../images/dark_mosaic.png");
 @background-color: #2f323b;
+@control-background: darken(@background-color, 5%);
 
 @active-color: #248ce7;
+@focus-color: #80bdff;
 
 
 html,
@@ -41,8 +43,9 @@ hr {
 input,
 button {
   color: @text-color;
+  background: @control-background;
   &:focus {
-    border-color: #5cb3fd;
+    border-color: @focus-color;
   }
 }
 

@@ -1,11 +1,18 @@
-<div id="home-root">
-  <div class="header">
-    
-  </div>
-  <div class="body">
+<div id="dashboard-root">
+  <div class="body" ng-hide="dashboard.loading">
     <div class="container">
       <h1>Welcome, {{ user.username }}.</h1>
       You can <a href="#" ng-click="dashboard.logout()">logout</a> when you're done.
+    </div>
+  </div>
+  <div class="loading table" ng-show="dashboard.loading">
+    <div class="loading tr">
+      <center class="loading td">
+        <div class="logout" ng-show="dashboard.loading.logout">
+          <div class="mb-4">Logging out...</div>
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </center>
     </div>
   </div>
 </div>

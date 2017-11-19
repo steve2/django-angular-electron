@@ -1,6 +1,21 @@
 
+@input-text-size: 18pt;
+@input-bottom-space: 15px;
+@input-width: 400px;
+
 login-form { 
   .wrapper {
-    
+    input {
+      text-align: center;
+      max-width: @input-width;
+      margin-bottom: @input-bottom-space;
+      font-size: @input-text-size;
+    }
+    .control {
+      button.login {
+        font-size: (@input-text-size - 2pt);
+        padding: 15px 30px;
+      }
+    }
   }
 }

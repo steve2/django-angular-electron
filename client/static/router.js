@@ -47,12 +47,6 @@ function Router ($stateProvider, $urlRouterProvider, $locationProvider) {
       templateUrl: "/static/states/dashboard/dashboard.html",
       controller: "DashboardController as dashboard",
       protected: true
-    })
-    .state("root.profile", {
-      url: "/profile/",
-      templateUrl: "/static/states/profile/profile.html",
-      controller: "ProfileController as profile",
-      protected: true
     });
 }
 

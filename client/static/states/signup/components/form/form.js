@@ -8,9 +8,9 @@ angular
 SignupForm.$inject = [];
 
 function SignupForm () {
-  controller.$inject = ['$scope', '$state', '$stateParams', 'Auth'];
+  SignupFormController.$inject = ['$scope', '$state', '$stateParams', 'Auth'];
 
-  function controller ($scope, $state, $stateParams, Auth) {
+  function SignupFormController ($scope, $state, $stateParams, Auth) {
     var ct = $scope;
     ct.loading = false;
     ct.error = null;
@@ -33,7 +33,7 @@ function SignupForm () {
   return {
     restrict: 'E',
     scope: {},
-    controller: controller,
+    controller: SignupFormController,
     templateUrl: "/static/states/signup/components/form/form.html"
   };
 }

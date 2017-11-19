@@ -1,14 +1,16 @@
 
-@header-height: 65px;
-
-#home-root {
-  .header {
-    background: darken(@background-color, 5%);
-    height: @header-height;
-  }
+#dashboard-root {
   .body {
     .container {
-      padding-top: 15px;
+      padding-top: 20px;
+    }
+  }
+  .loading.table {
+    position: absolute;
+    .loading.tr {
+      .loading.td {
+        vertical-align: middle;
+      }
     }
   }
 }

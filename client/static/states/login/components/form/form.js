@@ -8,9 +8,9 @@ angular
 LoginForm.$inject = [];
 
 function LoginForm () {
-  controller.$inject = ['$scope', '$state', '$stateParams', 'Auth'];
+  LoginFormController.$inject = ['$scope', '$state', '$stateParams', 'Auth'];
 
-  function controller ($scope, $state, $stateParams, Auth) {
+  function LoginFormController ($scope, $state, $stateParams, Auth) {
     var ct = $scope;
     ct.loading = false;
     ct.error = null;
@@ -33,7 +33,7 @@ function LoginForm () {
   return {
     restrict: 'E',
     scope: {},
-    controller: controller,
+    controller: LoginFormController,
     templateUrl: "/static/states/login/components/form/form.html"
   };
 }

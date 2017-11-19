@@ -1,32 +1,9 @@
 
-@input-text-size: 18pt;
-@input-text-background: darken(@background-color, 5%);
-@input-bottom-space: 15px;
-@input-width: 400px;
-@signup-button-color: #0275d8;
-@signup-button-color-front: #004279;
-@signup-button-border-size: 5px;
-@signup-button-depress-size: 3px;
-@signup-button-depressed-size: (@signup-button-border-size - @signup-button-depress-size);
-
 #signup-root {
   .body {
     .canvas {
       center {
         vertical-align: middle;
-      }
-    }
-    input {
-      text-align: center;
-      max-width: @input-width;
-      margin-bottom: @input-bottom-space;
-      font-size: @input-text-size;
-      background: @input-text-background;
-    }
-    .control {
-      button.signup {
-        font-size: (@input-text-size - 2pt);
-        padding: 15px 30px;
       }
     }
   }
