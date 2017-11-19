@@ -8,7 +8,8 @@ class Profile(models.Model):
     """Personal profile that corresponds with each User."""
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     about = models.TextField(max_length=512, blank=True)
-    location = models.CharField(max_length=32, blank=True)
+    live_location = models.CharField(max_length=64, blank=True)
+    from_location = models.CharField(max_length=64, blank=True)
     birthdate = models.DateField(null=True, blank=True)
     rank = models.CharField(max_length=32, blank=True, default='Peon')
 

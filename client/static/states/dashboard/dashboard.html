@@ -24,8 +24,10 @@
             </h1>
             <h5 class="mb-2 text-info smallcaps">{{ user.profile.rank }}</h5>
             <h5>Joined {{ formatDate(user.date_joined) }}</h5>
-            <h5 class="mb-0 pb-2" ng-hide="user.profile.location">Location unknown</h5>
-            <h5 class="mb-0 pb-2" ng-show="user.profile.location">From {{ user.profile.location }}</h5>
+            <h5 class="mb-0 pb-2" ng-hide="user.profile.from_location">From Unknown Location</h5>
+            <h5 class="mb-0 pb-2" ng-show="user.profile.from_location">From {{ user.profile.from_location }}</h5>
+            <h5 class="mb-0 pb-2" ng-hide="user.profile.live_location">Lives in Unknown Location</h5>
+            <h5 class="mb-0 pb-2" ng-show="user.profile.live_location">Lives in {{ user.profile.live_location }}</h5>
             <h5 class="mb-0 pb-2" ng-show="user.profile.birthdate">Born {{ moment(user.profile.birthdate).fromNow() }}</h5>
           </div>
         </div>
