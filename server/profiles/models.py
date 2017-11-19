@@ -10,6 +10,7 @@ class Profile(models.Model):
     about = models.TextField(max_length=512, blank=True)
     location = models.CharField(max_length=32, blank=True)
     birthdate = models.DateField(null=True, blank=True)
+    rank = models.CharField(max_length=32, blank=True, default='Peon')
 
 
 @receiver(post_save, sender=User)
