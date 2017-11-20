@@ -28,6 +28,12 @@ function LoginForm () {
         }
       );
     };
+
+    ct.twitchLogin = function () {
+      ct.loading = true;
+      location.assign("http://localhost:8080/accounts/twitch/login/");
+    };
+
   }
 
   return {
