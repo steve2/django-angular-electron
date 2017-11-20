@@ -1,0 +1,10 @@
+<div class="wrapper text-right">
+  <div ng-hide="connected('twitch')">
+    <twitch-button></twitch-button>
+  </div>
+  <div ng-show="connected('twitch')">
+    <span class="twitch-badge">
+      <i class="fa fa-twitch"></i> {{ connected('twitch').extra_data.name }}
+    </span>
+  </div>
+</div>
