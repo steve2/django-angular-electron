@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'rest_auth.registration',
     'allauth.socialaccount',
-    'allauth.socialaccount.providers.facebook',
+    # 'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.twitch',
     'profiles'
 ]
@@ -64,6 +64,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+SITE_ID = 1
 
 ROOT_URLCONF = 'server.urls'
 
@@ -97,6 +99,23 @@ ACCOUNT_EMAIL_VERIFICATION = 'none'
 REST_AUTH_SERIALIZERS = {
     'USER_DETAILS_SERIALIZER': 'server.overrides.serializers.UserDetailsSerializer'
 }
+
+# Social Account Settings
+SOCIAL_AUTH_SETTINGS = {
+    'TWITCH': {
+        'CLIENT_ID': '9s7s8phrqvszuhsw66xob17eql43ez',
+        'CLIENT_SECRET': 'bmfutj7u339hvti0cz7cdn5e7pi29v'
+    }
+}
+
+SOCIALACCOUNT_PROVIDERS = {
+    'twitch': {
+        'SCOPE': [ 'user_read', 'user_subscriptions' ],
+        'REDIRECT_URI': 'http://localhost:8080/accounts/twitch/login/callback/'
+    },
+}
+
+SOCIALACCOUNT_AUTO_SIGNUP = False
 
 
 WSGI_APPLICATION = 'server.wsgi.application'
@@ -190,7 +209,7 @@ from django.core.urlresolvers import reverse_lazy
 from configparser import ConfigParser
 
 LOGIN_URL = reverse_lazy('two_factor:login')
-LOGIN_REDIRECT_URL = reverse_lazy('two_factor:profile')
+LOGIN_REDIRECT_URL = "/"
 
 TWILIO_GATEWAY = 'two_factor.gateways.twilio.gateway.Twilio'
 FAKE_GATEWAY = 'two_factor.gateways.fake.Fake' # Gateway for development.
