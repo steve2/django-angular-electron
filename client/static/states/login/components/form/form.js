@@ -19,7 +19,6 @@ function LoginForm () {
       ct.loading = true;
       Auth.login(username, password).$promise.then(
         function (data) {
-          // Don't stop "loading" until the new state is loaded.
           $state.transitionTo($state.current, $stateParams, { reload: true });
         },
         function (error) {
@@ -31,7 +30,7 @@ function LoginForm () {
 
     ct.twitchLogin = function () {
       ct.loading = true;
-      location.assign("http://localhost:8080/accounts/twitch/login/");
+      location.assign("http://localhost:8080/accounts/twitch/login/?next=/");
     };
 
   }

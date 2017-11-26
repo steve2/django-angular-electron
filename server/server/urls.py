@@ -16,26 +16,16 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.conf.urls import include
-from two_factor.urls import urlpatterns as tf_urls
-# from two_factor.gateways.twilio.urls import urlpatterns as tf_twilio_urls
-from two_factor.admin import AdminSiteOTPRequired
 from server.views import IndexTemplate
 
-admin.site.__class__ = AdminSiteOTPRequired
-
 urlpatterns = [
+    # Django Admin site.
     url(r'^admin/', admin.site.urls),
 
-    # REST auth URLs.
-    url(r'^api/auth/', include('rest_auth.urls')),
-    url(r'^api/auth/register/', include('rest_auth.registration.urls')),
+    # REST Authentication provided by rest_auth.
+    # url(r'^api/auth/', include('rest_auth.urls')),
+    # url(r'^api/auth/register/', include('rest_auth.registration.urls')),
 
-    # Social account auth URLs.
-    url(r'^accounts/', include('allauth.urls')),
-
-    # Two factor authentication URLs.
-    url(r'', include(tf_urls, 'two_factor')),
-
-    # AngularJS base template.
+    # Default to the AngularJS application template.
     url(r'^.*$', IndexTemplate.as_view())
 ]

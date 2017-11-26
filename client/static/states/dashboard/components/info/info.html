@@ -1,0 +1,15 @@
+<div class="wrapper">
+  <h5 class="mb-3 text-info">{{ user.profile.rank }}</h5>
+  <h6>Joined {{ timeFromNow(user.date_joined) }} <small>on {{ formatDate(user.date_joined) }}</small></h6>
+  <!-- From Location -->
+  <h6 class="mb-0 pb-2" ng-hide="user.profile.from_location">Origins unknown</h6>
+  <h6 class="mb-0 pb-2" ng-show="user.profile.from_location">From {{ user.profile.from_location }}</h6>
+  <!-- Lives In Location -->
+  <h6 class="mb-0 pb-2" ng-hide="user.profile.live_location">Missing in action</h6>
+  <h6 class="mb-0 pb-2" ng-show="user.profile.live_location">Lives in {{ user.profile.live_location }}</h6>
+  <!-- Born <N> Years Ago -->
+  <h6 class="mb-0 pb-2" ng-hide="user.profile.birthdate">Born yesterday</h6>
+  <h6 class="mb-0 pb-2" ng-show="user.profile.birthdate">
+    Born {{ timeFromNow(user.profile.birthdate) }} <small>on {{ formatDate(user.profile.birthdate) }}</small>
+  </h6>
+</div>

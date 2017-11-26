@@ -13,12 +13,11 @@ function TwitchButton () {
   function TwitchButtonController ($scope) {
     var ct = $scope;
     
-
   }
 
   return {
     restrict: 'E',
-    scope: { click: '=' },
+    scope: { click: '=', disabled: '=' },
     controller: TwitchButtonController,
     templateUrl: "/static/components/social/twitch/button.html"
   };

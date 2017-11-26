@@ -27,6 +27,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# Login related URLs.
+
+LOGIN_URL = "/login/"
+LOGIN_REDIRECT_URL = "/"
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -37,19 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    'django_otp',
-    'django_otp.plugins.otp_static',
-    'django_otp.plugins.otp_totp',
-    'two_factor',
     'rest_framework',
     'rest_framework.authtoken',
-    'rest_auth',
-    'allauth',
-    'allauth.account',
-    'rest_auth.registration',
-    'allauth.socialaccount',
-    # 'allauth.socialaccount.providers.facebook',
-    'allauth.socialaccount.providers.twitch',
     'profiles'
 ]
 
@@ -59,8 +53,6 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django_otp.middleware.OTPMiddleware',
-    'two_factor.middleware.threadlocals.ThreadLocals',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -95,27 +87,27 @@ REST_FRAMEWORK = {
 }
 
 # Django REST Auth Settings.
-ACCOUNT_EMAIL_VERIFICATION = 'none'
-REST_AUTH_SERIALIZERS = {
-    'USER_DETAILS_SERIALIZER': 'server.overrides.serializers.UserDetailsSerializer'
-}
+# ACCOUNT_EMAIL_VERIFICATION = 'none'
+# REST_AUTH_SERIALIZERS = {
+#     'USER_DETAILS_SERIALIZER': 'server.overrides.serializers.UserDetailsSerializer'
+# }
 
-# Social Account Settings
-SOCIAL_AUTH_SETTINGS = {
-    'TWITCH': {
-        'CLIENT_ID': '9s7s8phrqvszuhsw66xob17eql43ez',
-        'CLIENT_SECRET': 'bmfutj7u339hvti0cz7cdn5e7pi29v'
-    }
-}
+# # Social Account Settings
+# SOCIAL_AUTH_SETTINGS = {
+#     'TWITCH': {
+#         'CLIENT_ID': '9s7s8phrqvszuhsw66xob17eql43ez',
+#         'CLIENT_SECRET': 'bmfutj7u339hvti0cz7cdn5e7pi29v'
+#     }
+# }
 
-SOCIALACCOUNT_PROVIDERS = {
-    'twitch': {
-        'SCOPE': [ 'user_read', 'user_subscriptions' ],
-        'REDIRECT_URI': 'http://localhost:8080/accounts/twitch/login/callback/'
-    },
-}
+# SOCIALACCOUNT_PROVIDERS = {
+#     'twitch': {
+#         'SCOPE': [ 'user_read', 'user_subscriptions' ],
+#         'REDIRECT_URI': 'http://localhost:8080/accounts/twitch/login/callback/'
+#     },
+# }
 
-SOCIALACCOUNT_AUTO_SIGNUP = False
+# SOCIALACCOUNT_AUTO_SIGNUP = True
 
 
 WSGI_APPLICATION = 'server.wsgi.application'
@@ -182,47 +174,3 @@ STATICFILES_DIRS = [
 
 # Destination directory for `collectstatic` command.
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
-# Logging
-# https://github.com/Bouke/django-two-factor-auth/blob/master/example/settings.py
-
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'console': {
-            'level': 'DEBUG',
-            'class': 'logging.StreamHandler',
-        },
-    },
-    'loggers': {
-        'two_factor': {
-            'handlers': ['console'],
-            'level': 'INFO',
-        }
-    }
-}
-
-# Two-Factor Authentication
-
-from django.core.urlresolvers import reverse_lazy
-from configparser import ConfigParser
-
-LOGIN_URL = reverse_lazy('two_factor:login')
-LOGIN_REDIRECT_URL = "/"
-
-TWILIO_GATEWAY = 'two_factor.gateways.twilio.gateway.Twilio'
-FAKE_GATEWAY = 'two_factor.gateways.fake.Fake' # Gateway for development.
-
-TWO_FACTOR_CALL_GATEWAY = FAKE_GATEWAY
-TWO_FACTOR_SMS_GATEWAY = FAKE_GATEWAY
-
-try:
-    config = ConfigParser()
-    config.read(os.path.join(BASE_DIR, '2fa.settings'))
-
-    TWILIO_CALLER_ID = config.get('Twilio', 'CallerID')
-    TWILIO_AUTH_TOKEN = config.get('Twilio', 'AuthToken')
-    TWILIO_ACCOUNT_SID = config.get('Twilio', 'AccountSID')
-except:
-    pass

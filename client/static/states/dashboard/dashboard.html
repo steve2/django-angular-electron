@@ -22,13 +22,7 @@
                 </span>
               </span>
             </h1>
-            <h5 class="mb-3 text-info">{{ user.profile.rank }}</h5>
-            <h6>Joined {{ formatDate(user.date_joined) }}</h6>
-            <h6 class="mb-0 pb-2" ng-hide="user.profile.from_location">From an Unknown Location</h6>
-            <h6 class="mb-0 pb-2" ng-show="user.profile.from_location">From {{ user.profile.from_location }}</h6>
-            <h6 class="mb-0 pb-2" ng-hide="user.profile.live_location">Lives in Unknown Location</h6>
-            <h6 class="mb-0 pb-2" ng-show="user.profile.live_location">Lives in {{ user.profile.live_location }}</h6>
-            <h6 class="mb-0 pb-2" ng-show="user.profile.birthdate">Born {{ moment(user.profile.birthdate).fromNow() }}</h6>
+            <user-information user="user"></user-information>
           </div>
         </div>
       </div>
@@ -53,6 +47,14 @@
       <h3>About</h3>
       <hr>
       <p>{{ user.profile.about }}</p>
+    </div>
+    <div class="container">
+      <div>
+        {{ dashboard.output }}
+      </div>
+      <button class="btn btn-secondary" ng-click="dashboard.connections()">
+        Go
+      </button>
     </div>
   </div>
   <div class="loading table" ng-show="dashboard.loading">

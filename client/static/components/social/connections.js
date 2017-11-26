@@ -8,18 +8,22 @@ angular
 SocialConnections.$inject = [];
 
 function SocialConnections () {
-  SocialConnectionsController.$inject = ['$rootScope', '$scope', 'User',];
+  SocialConnectionsController.$inject = ['$scope', 'User',];
 
-  function SocialConnectionsController ($rootScope, $scope, User) {
+  function SocialConnectionsController ($scope, User) {
     var ct = $scope;
-    ct.cache = {};
 
-    ct.connected = function (provider) {
-      if (ct.cache[provider] === undefined)
-        ct.cache[provider] = User.socialAccount($rootScope.user, provider);
-      console.log(ct.cache[provider]);
-      return ct.cache[provider];
+    ct.connections = {
+      twitch: User.socialAccount(ct.user, 'twitch')
     };
+
+    ct.connect = {
+      twitch: _connect_twitch
+    };
+
+    function _connect_twitch() {
+      location.assign("/accounts/twitch/login/?process=connect&next=/");
+    }
   }
 
   return {
@@ -29,5 +33,5 @@ function SocialConnections () {
     templateUrl: "/static/components/social/connections.html"
   };
 }
-  
-  })();
+
+})();
