@@ -6,15 +6,7 @@ angular
   .directive("twitchButton", TwitchButton);
 
 TwitchButton.$inject = [];
-
 function TwitchButton () {
-  TwitchButtonController.$inject = ['$scope'];
-
-  function TwitchButtonController ($scope) {
-    var ct = $scope;
-    
-  }
-
   return {
     restrict: 'E',
     scope: { click: '=', disabled: '=' },
@@ -22,5 +14,11 @@ function TwitchButton () {
     templateUrl: "/static/components/social/twitch/button.html"
   };
 }
+
+TwitchButtonController.$inject = ['$scope'];
+function TwitchButtonController ($scope) {
+  var ct = $scope;
   
-  })();
+}
+  
+})();

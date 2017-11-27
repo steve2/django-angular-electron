@@ -6,7 +6,6 @@ angular
   .factory("User", UserService);
 
 UserService.$inject = ['$rootScope', '$q'];
-
 function UserService ($rootScope, $q) {
 
   return {

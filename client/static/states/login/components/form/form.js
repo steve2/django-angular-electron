@@ -19,9 +19,8 @@ LoginFormController.$inject = ['$scope', '$state', '$stateParams', '$djoser'];
 function LoginFormController ($scope, $state, $stateParams, $djoser) {
   var ct = $scope;
 
-  ct.loading = false;
-  ct.error = null;
-
+  ct.loading = false; 
+  ct.error = null; 
   ct.login = _login;
   ct.twitchLogin = _twitchLogin;
 
