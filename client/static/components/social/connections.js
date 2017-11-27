@@ -22,7 +22,7 @@ function SocialConnections () {
     };
 
     function _connect_twitch() {
-      location.assign("/accounts/twitch/login/?process=connect&next=/");
+      // location.assign("/accounts/twitch/login/?process=connect&next=/");
     }
   }
 

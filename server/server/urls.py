@@ -22,9 +22,9 @@ urlpatterns = [
     # Django Admin site.
     url(r'^admin/', admin.site.urls),
 
-    # REST Authentication provided by rest_auth.
-    # url(r'^api/auth/', include('rest_auth.urls')),
-    # url(r'^api/auth/register/', include('rest_auth.registration.urls')),
+    # REST Authentication provided by `djoser`.
+    url(r'^api/auth/', include('djoser.urls')),
+    url(r'^api/auth/', include('djoser.urls.authtoken')),
 
     # Default to the AngularJS application template.
     url(r'^.*$', IndexTemplate.as_view())

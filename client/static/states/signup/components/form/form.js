@@ -8,16 +8,16 @@ angular
 SignupForm.$inject = [];
 
 function SignupForm () {
-  SignupFormController.$inject = ['$scope', '$state', '$stateParams', 'Auth'];
+  SignupFormController.$inject = ['$scope', '$state', '$stateParams', '$djoser'];
 
-  function SignupFormController ($scope, $state, $stateParams, Auth) {
+  function SignupFormController ($scope, $state, $stateParams, $djoser) {
     var ct = $scope;
     ct.loading = false;
     ct.error = null;
 
     ct.signup = function (username, email, password, confirmPassword) {
       ct.loading = true;
-      Auth.register(username, email, password, confirmPassword).$promise.then(
+      $djoser.register(username, email, password, confirmPassword).$promise.then(
         function (data) {
           // Don't stop "loading" until the new state is loaded.
           $state.transitionTo($state.current, $stateParams, { reload: true });

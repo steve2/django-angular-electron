@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'rest_framework',
     'rest_framework.authtoken',
+    'djoser',
     'profiles'
 ]
 
@@ -79,36 +80,6 @@ TEMPLATES = [
     },
 ]
 
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.SessionAuthentication',
-        # 'rest_framework.authentication.TokenAuthentication',
-   )
-}
-
-# Django REST Auth Settings.
-# ACCOUNT_EMAIL_VERIFICATION = 'none'
-# REST_AUTH_SERIALIZERS = {
-#     'USER_DETAILS_SERIALIZER': 'server.overrides.serializers.UserDetailsSerializer'
-# }
-
-# # Social Account Settings
-# SOCIAL_AUTH_SETTINGS = {
-#     'TWITCH': {
-#         'CLIENT_ID': '9s7s8phrqvszuhsw66xob17eql43ez',
-#         'CLIENT_SECRET': 'bmfutj7u339hvti0cz7cdn5e7pi29v'
-#     }
-# }
-
-# SOCIALACCOUNT_PROVIDERS = {
-#     'twitch': {
-#         'SCOPE': [ 'user_read', 'user_subscriptions' ],
-#         'REDIRECT_URI': 'http://localhost:8080/accounts/twitch/login/callback/'
-#     },
-# }
-
-# SOCIALACCOUNT_AUTO_SIGNUP = True
-
 
 WSGI_APPLICATION = 'server.wsgi.application'
 
@@ -130,6 +101,7 @@ DATABASES = {
     #     'PORT': '3306',
     # },
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -174,3 +146,14 @@ STATICFILES_DIRS = [
 
 # Destination directory for `collectstatic` command.
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+
+# Django REST Framework Settings
+# http://www.django-rest-framework.org/
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
+   )
+}

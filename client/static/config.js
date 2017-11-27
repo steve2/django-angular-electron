@@ -5,13 +5,14 @@ angular
   .module("app", [
     "ui.router",
     "ngResource",
-    "ngCookies"
+    "ngCookies",
+    "djoser"
   ])
   .config(Config)
   .run(Run);
 
 Config.$inject = ["$httpProvider", "$resourceProvider", "$locationProvider"];
-Run.$inject = ["$rootScope", "$state", "$location", "$transitions", "$q", "Auth"];
+Run.$inject = ["$rootScope", "$state", "$location", "$transitions", "$q", "$djoser"];
 
 function Config ($httpProvider, $resourceProvider, $locationProvider) {
   $httpProvider.defaults.xsrfCookieName = "csrftoken";
@@ -20,7 +21,7 @@ function Config ($httpProvider, $resourceProvider, $locationProvider) {
   $locationProvider.html5Mode({ enabled: true, requireBase: false });
 }
 
-function Run ($rootScope, $state, $location, $transitions, $q, Auth) {  
+function Run ($rootScope, $state, $location, $transitions, $q, $djoser) {  
   // These functions can be used by any AngularJS templates.
   $rootScope.moment = moment;
   $rootScope.link = $state.go;
@@ -31,7 +32,7 @@ function Run ($rootScope, $state, $location, $transitions, $q, Auth) {
   var initialLoading = $q.defer();
   $rootScope.user = null;
   // Load current session (if it exists).
-  Auth.current().$promise.then(
+  $djoser.current().$promise.then(
     function (data) {
       $rootScope.user = data;
       initialLoading.resolve();
