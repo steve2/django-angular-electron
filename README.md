@@ -1,4 +1,4 @@
-### Django/AngularJS/Electron Application
+# Django/AngularJS/Electron Application
 
 Prior to developing, you may need to run `setup.py`. 
 
