@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app="app">
 <head>
+  <!-- The <base> tag needs to be set to the URL of the active site.
+      For debugging this would typically be the loopback, but for production
+      it needs to be the "publicly" production site address. -->
   <base href="/" />
 
   <meta charset="utf-8" />
-  <link rel="stylesheet" href="/static/bower_components/font-awesome/css/font-awesome.min.css" />
   <link rel="stylesheet" href="/static/bower_components/bootstrap/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="/static/styles/site.css" />
+
+  <!-- Font Awesome CDN -->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.1/js/all.js"></script>
 
   <title>App Title</title>
 </head>
@@ -35,9 +40,6 @@
   <script type="text/javascript" src="/static/modules/djoser/djoser.service.js"></script>
 
   <script type="text/javascript" src="/static/services/User.js"></script>
-  
-  <script type="text/javascript" src="/static/components/social/connections.js"></script>
-  <script type="text/javascript" src="/static/components/social/twitch/button.js"></script>
 
   <script type="text/javascript" src="/static/states/root.js"></script>
   <script type="text/javascript" src="/static/states/dashboard/dashboard.js"></script>

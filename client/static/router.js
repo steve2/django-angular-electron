@@ -27,24 +27,24 @@ function Router ($stateProvider, $urlRouterProvider, $locationProvider) {
   $stateProvider
     .state("root", {
       abstract: true,
-      templateUrl: "/static/states/root.html",
+      templateUrl: "static/states/root.html",
       controller: "RootController as root"
     })
     .state("root.signup", {
       url: "/signup/",
-      templateUrl: "/static/states/signup/signup.html",
+      templateUrl: "static/states/signup/signup.html",
       controller: "SignupController as signup",
       registration: true
     })
     .state("root.login", {
       url: "/login/",
-      templateUrl: "/static/states/login/login.html",
+      templateUrl: "static/states/login/login.html",
       controller: "LoginController as login",
       registration: true
     })
     .state("root.dashboard", {
       url: "/dashboard/",
-      templateUrl: "/static/states/dashboard/dashboard.html",
+      templateUrl: "static/states/dashboard/dashboard.html",
       controller: "DashboardController as dashboard",
       protected: true
     });

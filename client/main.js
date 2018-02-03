@@ -10,7 +10,7 @@ app.on('window-all-closed', function() {
 
 app.on('ready', function() { 
   window = new BrowserWindow({width: 800, height: 600}); 
-  window.loadURL('file://' + __dirname + '/index.html'); 
+  window.loadURL('file://' + __dirname + '/index.electron.html'); 
   window.on('closed', function() {
     window = null;
   }); 

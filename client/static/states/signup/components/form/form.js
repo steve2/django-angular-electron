@@ -34,7 +34,7 @@ function SignupForm () {
     restrict: 'E',
     scope: {},
     controller: SignupFormController,
-    templateUrl: "/static/states/signup/components/form/form.html"
+    templateUrl: "static/states/signup/components/form/form.html"
   };
 }
 
