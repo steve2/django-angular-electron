@@ -7,3 +7,7 @@ For the server, this will:
   * update the environment PIP to the latest version,
   * perform Django migrations
   * create a Django super user
+
+For the client, this will:
+  * initialize NPM and `node_modules/`.
+  * initialize Bower and `bower_components/`.
