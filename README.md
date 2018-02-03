@@ -1,5 +1,7 @@
 # Django/AngularJS/Electron Application
 
+### Setup
+
 Prior to developing, you may need to run `setup.py`. 
 
 For the server, this will:
@@ -11,5 +13,7 @@ For the server, this will:
 For the client, this will:
   * initialize NPM and `node_modules/`.
   * initialize Bower and `bower_components/`.
+
+### Running
 
 Once the development environment is setup, the application can be started by running `run.py`. This should start a Django server and an Electron app. The Django server can be reached in a browser at the address `http://localhost:8080/`.
