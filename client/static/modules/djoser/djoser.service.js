@@ -9,29 +9,37 @@ djoser.$inject = ['$rootScope', '$resource', '$cookies', '$q', 'settings'];
 
 function djoser ($rootScope, $resource, $cookies, $q, settings) {
 
-  if (isElectron()) {
-    var loginEndpoint = 'http://localhost:8080/api/auth/token/create/';
-    var logoutEndpoint = 'http://localhost:8080/api/auth/token/destroy/';
-    var currentEndpoint = 'http://localhost:8080/api/auth/me/';
-  } else {
-    var loginEndpoint = "/api/auth/token/create/";
-    var logoutEndpoint = "/api/auth/token/destroy/";
-    var currentEndpoint = "/api/auth/me/";
-  }
-  
   let endpoints = {
-    login: $resource(loginEndpoint, {}, {}),
-    logout: $resource(logoutEndpoint, {}, {}),
-    current: $resource(currentEndpoint, {}, {})
+    login: $resource(_get_url("/api/auth/token/create/"), {}, {}),
+    logout: $resource(_get_url("/api/auth/token/destroy/"), {}, {}),
+    current: $resource(_get_url("/api/auth/me/"), {}, {}),
+    create: $resource(_get_url("/api/auth/users/create"), {}, {}),
+    delete: $resource(_get_url("/api/auth/users/delete/"), {}, {}),
+    activate: $resource(_get_url("/api/auth/users/activate/"), {}, {}),
+    changePassword: $resource(_get_url("/api/auth/password/"), {}, {})
   };
 
   return {
+    // User management.
     current: endpoints.current.get,
+    create: endpoints.create.save,
+    delete: endpoints.delete.save,
+    activate: endpoints.activate.save,
+    changePassword: endpoints.changePassword.save,
+
+    // Token authentication.
     login: _login,
     logout: _logout
   };
 
-// ---------------------------------------------------------------------
+  // ---------------------------------------------------------------------
+
+  function _get_url(uri) {
+    if (isElectron())
+      return 'http://localhost:8080' + uri
+    else
+      return uri
+  }
 
   function _login(username, password) {
     var response = endpoints.login.save(

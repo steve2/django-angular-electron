@@ -157,3 +157,9 @@ REST_FRAMEWORK = {
         # 'rest_framework.authentication.SessionAuthentication',
    )
 }
+
+DJOSER = {
+    'SERIALIZERS': {
+        'user': 'profiles.serializers.UserSerializer'
+    }
+}
