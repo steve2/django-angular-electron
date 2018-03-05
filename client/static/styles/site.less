@@ -1,5 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Anton|Passion+One');
+@import url('https://fonts.googleapis.com/css?family=Anton|Passion+One|Mina');
 
+@font-family: "Mina";
 @text-color: #eee;
 @background: url("../images/dark_mosaic.png");
 @background-color: #2f323b;
@@ -8,6 +9,7 @@
 @active-color: #248ce7;
 @focus-color: #80bdff;
 
+@border-primary-color: #556;
 
 html,
 body {
@@ -16,6 +18,7 @@ body {
   color: @text-color;
   // background: @background;
   background-color: @background-color;
+  // font-family: @font-family;
 
   & > div {
     height: 100%;
@@ -37,13 +40,14 @@ button {
 }
 
 hr {
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: 1px solid @border-primary-color;
 }
 
 input,
 button {
   color: @text-color;
   background: @control-background;
+  border-color: @border-primary-color;
   &:focus {
     border-color: @focus-color;
   }

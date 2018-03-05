@@ -12,6 +12,8 @@
 .form-control {
   color: @text-color;
   background: @control-background;
+  border: 1px solid @border-primary-color;
+  height: auto;
   &:focus {
     color: @text-color;
     background: darken(@control-background, 3%);
@@ -32,7 +34,8 @@
 
 .dropdown-menu {
   color: @text-color;
-  background: darken(@background-color, 5%);
+  background: darken(@background-color, 2%);
+  border: 1px solid @border-primary-color;
   a {
     color: @text-color;
   }
