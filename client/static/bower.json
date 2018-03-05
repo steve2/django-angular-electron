@@ -19,16 +19,18 @@
     "angular": "~1.6.7",
     "angular-resource": "~1.6.7",
     "angular-cookies": "~1.6.7",
-    "angular-ui-router": "1.0.11",
+    "angular-ui-router": "~1.0.15",
     "jquery": "^3.2.1",
     "moment": "^2.19.2",
-    "font-awesome": "fontawesome#^4.7.0",
-    "bootstrap": "~3.3.7"
+    "font-awesome": "~5.0.8",
+    "bootstrap": "~4.0.0"
   },
   "resolutions": {
     "angular": "~1.6.7",
     "angular-resource": "~1.6.7",
     "angular-cookies": "~1.6.7",
-    "bootstrap": "v4.0.0-beta"
+    "bootstrap": "~4.0.0",
+    "angular-ui-router": "~1.0.15",
+    "font-awesome": "~5.0.8"
   }
 }

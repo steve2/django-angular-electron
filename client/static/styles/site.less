@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Anton|Passion+One|Mina');
 
 @font-family: "Mina";
+@font-family-default: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+
 @text-color: #eee;
 @background: url("../images/dark_mosaic.png");
 @background-color: #2f323b;
@@ -18,7 +20,7 @@ body {
   color: @text-color;
   // background: @background;
   background-color: @background-color;
-  // font-family: @font-family;
+  font-family: @font-family-default;
 
   & > div {
     height: 100%;
@@ -26,7 +28,8 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-weight: 100;    
+  font-weight: 100;
+  font-family: @font-family-default;
 }
 
 button {

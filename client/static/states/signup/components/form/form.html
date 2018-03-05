@@ -7,15 +7,15 @@
     </div>
   </div>
   <ng-form name="signupForm">
+      <div class="email">
+        <label ng-class="{ 'text-danger': error.email }">Email</label>
+        <label class="text-danger" ng-show="error.email">({{ error.email[0] }})</label>
+        <input name="email" type="text" class="form-control" required ng-model="email" />
+      </div>
     <div class="username">
       <label ng-class="{ 'text-danger': error.username }">Username</label>
       <label class="text-danger" ng-show="error.username">({{ error.username[0] }})</label>
       <input name="username" type="text" class="form-control" required ng-model="username" />
-    </div>
-    <div class="email">
-      <label ng-class="{ 'text-danger': error.email }">Email</label>
-      <label class="text-danger" ng-show="error.email">({{ error.email[0] }})</label>
-      <input name="email" type="text" class="form-control" required ng-model="email" />
     </div>
     <div class="password">
       <label ng-class="{ 'text-danger': error.password1 }">Password</label>
@@ -33,7 +33,7 @@
         Signup
       </button>
       <div class="help mt-4">
-        Already have an account? Click <a ui-sref="root.login">here</a> to login.
+        Already have credentials? Click <a ui-sref="root.login">here</a> to login.
       </div>
     </div>
   </ng-form>
