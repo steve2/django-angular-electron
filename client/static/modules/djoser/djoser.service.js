@@ -83,11 +83,9 @@ function djoser ($rootScope, $resource, $cookies, $q, settings) {
     var deferred = $q.defer();
     response.$promise.then(
       function (data) {
-        console.log(data);
         deferred.resolve(data);
       },
       function (error ){
-        console.log(error);
         deferred.reject(error);
       });
     deferred.$promise = deferred.promise;

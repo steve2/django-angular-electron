@@ -28,7 +28,7 @@ function LoginFormController ($scope, $state, $stateParams, $djoser) {
     ct.loading = true;
     $djoser.login(username, password).$promise.then(
       function (data) {
-        $state.transitionTo($state.current, $stateParams, { reload: true });
+        $state.transitionTo('root.dashboard', $stateParams, { reload: true });
       },
       function (error) {
         ct.loading = false;
@@ -41,6 +41,7 @@ function LoginFormController ($scope, $state, $stateParams, $djoser) {
     ct.loading = true;
     // location.assign("http://localhost:8080/accounts/twitch/login/?next=/");
   }
+
 
 }
 

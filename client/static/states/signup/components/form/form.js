@@ -15,19 +15,35 @@ function SignupForm () {
     ct.loading = false;
     ct.error = null;
 
-    ct.signup = function (username, email, password, confirmPassword) {
-      ct.loading = true;
-      $djoser.register(username, email, password, confirmPassword).$promise.then(
+    ct.signup = _signup;
+    
+    function _login (username, password) {
+      $djoser.login(username, password).$promise.then(
         function (data) {
-          // Don't stop "loading" until the new state is loaded.
-          $state.transitionTo($state.current, $stateParams, { reload: true });
+          $state.transitionTo('root.dashboard', $stateParams, { reload: true });
+        },
+        function (error) {
+          // Do nothing.
+          ct.loading = false;
+          ct.error = error.data;
+        }
+      )
+    }
+
+    function _signup (username, email, password, confirmPassword) {
+      ct.loading = true;
+      $djoser.register(username, email, password).$promise.then(
+        function (data) {
+          _login(username, password);
         },
         function (error) {
           ct.loading = false;
           ct.error = error.data;
         }
       );
-    };
+    }
+
+
   }
 
   return {
