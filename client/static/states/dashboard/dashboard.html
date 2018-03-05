@@ -27,23 +27,11 @@
         </div>
       </div>
     </div>
-    <div class="settings absolute">
-      <div class="container relative">
-        <div class="dropdown">
-          <button class="btn btn-default" data-toggle="dropdown">
-            <i class="fas fa-ellipsis-h" data-fa-transform="grow-12"></i>
-          </button>
-          <div class="dropdown-menu dropdown-menu-right">
-            <a class="dropdown-item" ng-click="dashboard.logout()">Logout</a>
-          </div>
-        </div>
-      </div>
-    </div>
     <hr class="mt-0">
-    <div class="container about">
-      <h3>About</h3>
-      <hr>
-      <p>{{ user.profile.about }}</p>
+    <div class="container text-right">
+      <button class="btn btn-default" ng-click="dashboard.logout()">
+        Logout
+      </button>
     </div>
   </div>
   <div class="loading table" ng-show="dashboard.loading">
