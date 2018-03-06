@@ -11,7 +11,7 @@ function LoginForm () {
     restrict: 'E',
     scope: {},
     controller: LoginFormController,
-    templateUrl: "static/states/login/components/form/form.html"
+    templateUrl: "static/states/login/form/form.html"
   };
 }
 

@@ -11,7 +11,7 @@ function UserInformation () {
     restrict: 'E',
     scope: { user: '=' },
     controller: UserInformationController,
-    templateUrl: "static/states/dashboard/components/info/info.html"
+    templateUrl: "static/states/dashboard/info/info.html"
   };
 }
 
