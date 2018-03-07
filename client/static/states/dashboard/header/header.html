@@ -1,0 +1,27 @@
+<!-- There should only be one header for the dashboard. -->
+<div id="dashboard-header">
+  <md-card>
+  
+    <md-card-title>
+  
+      <md-card-title-media>
+        <div class="md-media-lg">
+          <i class="material-icons" style="font-size:152px">account_circle</i>
+        </div>
+      </md-card-title-media>
+  
+      <md-card-title-text>
+        <span class="md-headline">{{ user.username }}</span>
+        <span class="md-subhead" ng-show="user.is_staff">Administrator</span>
+        <span class="md-subhead" ng-hide="user.is_staff">Member</span>
+        <span class="md-subhead">{{ user.profile.rank }}</span>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button class="md-raised md-accent" ng-click="controls.logout()">
+            Logout
+          </md-button>
+        </md-card-actions>
+      </md-card-title-text>
+  
+    </md-card-title>
+  </md-card>
+</div>

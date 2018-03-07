@@ -1,0 +1,48 @@
+
+<div layout="column" layout-align="center center">
+
+  <md-input-container class="mb-0" ng-show="error.non_field_errors">
+    <div ng-message layout="row" layout-align="center center">
+      <i class="material-icons fontsize-18">lock_outline</i>
+      <span class="ml-tiny">{{ error.non_field_errors[0] }}</span>
+    </div>
+  </md-input-container>
+
+  <!-- Used for spacing when there aren't errors to handle above. -->
+  <div ng-hide="error.non_field_errors" class="mt-2"></div>
+
+  <div layout="column" layout-align="center center" class="fullwidth mt-1">
+    <md-input-container class="md-block fullwidth mb-small" flex-gt-sm>
+      <label>Email</label>
+      <input type="email" ng-model="email" />
+      <div ng-message>{{ error.email[0] }}</div>
+    </md-input-container>
+
+    <md-input-container class="md-block fullwidth mb-small" flex-gt-sm>
+      <label>Username</label>
+      <input type="text" ng-model="username" />
+      <div ng-message>{{ error.username[0] }}</div>
+    </md-input-container>
+
+    <md-input-container class="md-block fullwidth mb-small" flex-gt-sm>
+      <label>Password</label>
+      <input type="password" ng-model="password" />
+      <div ng-message>{{ error.password[0] }}</div>
+    </md-input-container>
+
+    <md-input-container class="md-block fullwidth" flex-gt-sm>
+      <label>Confirm Password</label>
+      <input type="password" ng-model="confirm" />
+      <div ng-message>{{ error.confirm[0] }}</div>
+    </md-input-container>
+
+    <div layout="column" layout-align="center center" layout-fill>
+      <md-button 
+        class="md-raised md-primary md-hue-2" 
+        ng-click="signup(email, username, password, confirm)">
+        SIGNUP
+      </md-button>
+    </div>
+  </div>
+
+</div>

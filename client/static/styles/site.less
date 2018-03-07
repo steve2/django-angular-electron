@@ -1,104 +1,29 @@
-@import url('https://fonts.googleapis.com/css?family=Anton|Passion+One|Mina');
 
-@font-family: "Mina";
-@font-family-default: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-
-@text-color: #eee;
-@background: url("../images/dark_mosaic.png");
-@background-color: #2f323b;
-@control-background: darken(@background-color, 5%);
-
-@active-color: #248ce7;
-@focus-color: #80bdff;
-
-@border-primary-color: #556;
-
-html,
-body {
-  height: 100%;
-  margin: 0;
-  color: @text-color;
-  // background: @background;
-  background-color: @background-color;
-  font-family: @font-family-default;
-
-  & > div {
-    height: 100%;
-  }
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 100;
-  font-family: @font-family-default;
-}
-
-button {
-  &:hover:not(:disabled) {
-    cursor: pointer;
-  }
-  &:active, &:focus {
-    outline: none !important;
-    box-shadow: none !important;
-  }
-}
-
-hr {
-  border-top: 1px solid @border-primary-color;
-}
-
-input,
-button {
-  color: @text-color;
-  background: @control-background;
-  border-color: @border-primary-color;
-  &:focus {
-    border-color: @focus-color;
-  }
-}
-
-.table {
-  display: table;
-  width: 100%;
-  height: 100%;
-  margin-bottom: 0;
-  & > .tr {
-    display: table-row;
-    & > .td {
-      display: table-cell;
-    }
-  }
-}
-
-/* Striped background LESS function. */
-.bg-striped(@color1, @color2) {
-  background: repeating-linear-gradient(
-    -55deg,
-    @color1,
-    @color1 10px,
-    @color2 10px,
-    @color2 20px
-  );
-}
-
-/* Common CSS Wrappers */
-.relative {
-  position: relative;
-}
-.absolute {
+.center-fill (@width, @height) {
   position: absolute;
-}
-.smallcaps {
-  font-variant: small-caps;
-}
-.uppercase {
-  text-transform: uppercase;
-}
-.capitalize {
-  text-transform: capitalize;
-}
-.lowercase {
-  text-transform: lowercase;
+  bottom: calc(~"50% - "(@height / 2));
+  left: calc(~"50% - "(@width / 2));
 }
 
-@import "bootstrap.less";
+.fullwidth {
+  width: 100%;
+}
+
+.fontsize-96 { font-size: 96px !important; }
+.fontsize-72 { font-size: 72px !important; }
+.fontsize-68 { font-size: 68px !important; }
+.fontsize-48 { font-size: 48px !important; }
+.fontsize-42 { font-size: 42px !important; }
+.fontsize-36 { font-size: 36px !important; }
+.fontsize-32 { font-size: 32px !important; }
+.fontsize-24 { font-size: 24px !important; }
+.fontsize-18 { font-size: 18px !important; }
+.fontsize-16 { font-size: 16px !important; }
+.fontsize-12 { font-size: 12px !important; }
+.fontsize-10 { font-size: 10px !important; }
+
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+@import "spacing.less";
 @import "imports.less";

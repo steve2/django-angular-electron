@@ -1,36 +1,5 @@
-
-@top-bg-stripe-1: #222;
-@top-bg-stripe-2: #252525;
-
-#dashboard-root {
-  .top {
-    .bg-striped(@top-bg-stripe-1, @top-bg-stripe-2);
-    .avatar {
-      .fa-user-circle {
-        font-size: 101pt;
-        text-shadow: 0 5px 15px black;
-      }
-      .frame {
-        .td {
-          vertical-align: middle;
-        }
-      }
-    }
-  }
-  .you {
-    font-size: 20pt;
-    color: darken(@text-color, 40%);
-    .relative {
-      left: 5px;
-      top: 10px;
-    }
-  }
-  .loading.table {
-    position: absolute;
-    .loading.tr {
-      .loading.td {
-        vertical-align: middle;
-      }
-    }
+#dashboard {
+  md-progress-circular {
+    .center-fill(96px, 96px);
   }
 }

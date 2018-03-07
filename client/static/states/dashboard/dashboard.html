@@ -1,47 +1,17 @@
-<div id="dashboard-root">
-  <div class="content" ng-hide="dashboard.loading">
-    <div class="top pt-2 pb-2">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-3 avatar">
-            <div class="frame table">
-              <div class="tr">
-                <div class="td">
-                  <center>
-                    <i class="fa fa-user-circle"></i>
-                  </center>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-9 information">
-            <h1 class="mb-0">{{ user.username }} 
-              <span class="you absolute">
-                <span class="relative">
-                  (you)
-                </span>
-              </span>
-            </h1>
-            <user-information user="user"></user-information>
-          </div>
-        </div>
-      </div>
-    </div>
-    <hr class="mt-0">
-    <div class="container text-right">
-      <button class="btn btn-default" ng-click="dashboard.logout()">
-        Logout
-      </button>
-    </div>
+<md-content layout-fill id="dashboard">
+
+  <div ng-show="dashboard.loading.logout">
+    <md-progress-circular 
+      md-diameter="96"
+      md-mode="indeterminate">
+    </md-progress-circular>
   </div>
-  <div class="loading table" ng-show="dashboard.loading">
-    <div class="loading tr">
-      <center class="loading td">
-        <div class="logout" ng-show="dashboard.loading.logout">
-          <div class="mb-4">Logging out...</div>
-          <i class="fa fa-spinner fa-pulse fa-5x"></i>
-        </div>
-      </center>
-    </div>
+
+  <div ng-hide="dashboard.loading.logout">
+    <dashboard-header 
+      user="user" 
+      controls="dashboard.controls">
+    </dashboard-header>
   </div>
-</div>
+
+</md-content>

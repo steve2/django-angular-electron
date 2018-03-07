@@ -11,6 +11,7 @@ function DashboardController ($timeout, $http, $state, $stateParams, $djoser) {
 
   ct.loading = null;
   ct.logout = _logout;
+  ct.controls = { logout: _logout };
 
   function _logout() {
     ct.loading = {};

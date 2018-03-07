@@ -6,19 +6,24 @@ angular
     "ui.router",
     "ngResource",
     "ngCookies",
+    "ngMaterial",
     "djoser"
   ])
   .config(Config)
   .run(Run);
 
-Config.$inject = ["$httpProvider", "$resourceProvider", "$locationProvider"];
+Config.$inject = ["$httpProvider", "$resourceProvider", "$locationProvider", "$mdThemingProvider"];
 Run.$inject = ["$rootScope", "$state", "$location", "$transitions", "$q", "$djoser"];
 
-function Config ($httpProvider, $resourceProvider, $locationProvider) {
+function Config ($httpProvider, $resourceProvider, $locationProvider, $mdThemingProvider) {
   $httpProvider.defaults.xsrfCookieName = "csrftoken";
   $httpProvider.defaults.xsrfHeaderName = "X-CSRFToken";
   $resourceProvider.defaults.stripTrailingSlashes = false;
   $locationProvider.html5Mode({ enabled: true, requireBase: false });
+  $mdThemingProvider.theme('default')
+    .primaryPalette('blue')
+    .accentPalette('blue-grey')
+    .dark();
 }
 
 function Run ($rootScope, $state, $location, $transitions, $q, $djoser) {  

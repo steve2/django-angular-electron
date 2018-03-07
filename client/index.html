@@ -7,7 +7,7 @@
   <base href="/" />
 
   <meta charset="utf-8" />
-  <link rel="stylesheet" href="/static/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/static/bower_components/angular-material/angular-material.css" />
   <link rel="stylesheet" href="/static/styles/site.css" />
 
   <!-- Font Awesome CDN -->
@@ -16,7 +16,7 @@
   <title>App Title</title>
 </head>
 <body>
-  <div ui-view></div>
+  <div layout-fill ui-view></div>
 
   <!-- Electron requires additional setup for JQuery to allow other scripts to recognize it. -->
   <!-- Related StackOverflow: https://stackoverflow.com/questions/32621988/electron-jquery-is-not-defined -->
@@ -25,9 +25,12 @@
 
   <script type="text/javascript" src="/static/bower_components/moment/moment.js"></script>
   <script type="text/javascript" src="/static/bower_components/popper.js/dist/umd/popper.js"></script>
-  <script type="text/javascript" src="/static/bower_components/bootstrap/dist/js/bootstrap.js"></script>
 
   <script type="text/javascript" src="/static/bower_components/angular/angular.js"></script>
+  <script type="text/javascript" src="/static/bower_components/angular-aria/angular-aria.js"></script>
+  <script type="text/javascript" src="/static/bower_components/angular-animate/angular-animate.js"></script>
+  <script type="text/javascript" src="/static/bower_components/angular-messages/angular-messages.js"></script>
+  <script type="text/javascript" src="/static/bower_components/angular-material/angular-material.js"></script>
   <script type="text/javascript" src="/static/bower_components/angular-resource/angular-resource.js"></script>
   <script type="text/javascript" src="/static/bower_components/angular-cookies/angular-cookies.js"></script>
   <script type="text/javascript" src="/static/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
@@ -43,11 +46,11 @@
 
   <script type="text/javascript" src="/static/states/root.js"></script>
   <script type="text/javascript" src="/static/states/dashboard/dashboard.js"></script>
-  <script type="text/javascript" src="/static/states/dashboard/info/info.js"></script>
+  <script type="text/javascript" src="/static/states/dashboard/header/header.js"></script>
   <script type="text/javascript" src="/static/states/login/login.js"></script>
-  <script type="text/javascript" src="/static/states/login/form/form.js"></script>
+  <script type="text/javascript" src="/static/states/login/login-form/login-form.js"></script>
   <script type="text/javascript" src="/static/states/signup/signup.js"></script>
-  <script type="text/javascript" src="/static/states/signup/form/form.js"></script>
+  <script type="text/javascript" src="/static/states/signup/signup-form/signup-form.js"></script>
 
   <!-- Part of JQuery setup for Electron. -->
   <script type="text/javascript">if (window.module) module = window.module</script>
