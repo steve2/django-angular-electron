@@ -36,9 +36,9 @@ function djoser ($rootScope, $resource, $cookies, $q, settings) {
 
   function _get_url(uri) {
     if (isElectron())
-      return 'http://localhost:8080' + uri
+      return 'http://localhost:8080' + uri;
     else
-      return uri
+      return uri;
   }
 
   function _login(username, password) {
