@@ -11,10 +11,10 @@
   <!-- Used for spacing when there aren't errors to handle above. -->
   <div ng-hide="error.non_field_errors" class="mt-2"></div>
 
-  <div layout="column" layout-align="center center" class="fullwidth mt-1">
+  <form name="signupform" layout="column" layout-align="center center" class="fullwidth mt-1">
     <md-input-container class="md-block fullwidth mb-small" flex-gt-sm>
       <label>Email</label>
-      <input type="email" ng-model="email" />
+      <input type="text" name="email" ng-model="email" />
       <div ng-message>{{ error.email[0] }}</div>
     </md-input-container>
 
@@ -28,6 +28,7 @@
       <label>Password</label>
       <input type="password" ng-model="password" />
       <div ng-message>{{ error.password[0] }}</div>
+      <div ng-message>{{ error.password[1] }}</div>
     </md-input-container>
 
     <md-input-container class="md-block fullwidth" flex-gt-sm>
@@ -43,6 +44,6 @@
         SIGNUP
       </md-button>
     </div>
-  </div>
+  </form>
 
 </div>

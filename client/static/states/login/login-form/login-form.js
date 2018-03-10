@@ -19,8 +19,8 @@ LoginFormController.$inject = ['$scope'];
 function LoginFormController ($scope) {
   var ct = $scope;
   
-  ct.username = null;
-  ct.password = null;
+  // ct.username = null;
+  // ct.password = null;
   
 }
 

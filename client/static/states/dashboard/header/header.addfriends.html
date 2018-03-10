@@ -1,0 +1,26 @@
+
+<div class="dashboard-header-addfriends">
+  <div layout="column" layout-align="center center">
+
+    <div class="md-title">
+      Search for friends
+    </div>
+
+    <md-list class="fullwidth" flex>  
+      <md-virtual-repeat-container flex>
+        <md-list-item md-on-demand flex
+          md-virtual-repeat="member in members" 
+          class="repeated-item md-2-line">
+
+          <md-divider ng-if="$first"></md-divider>
+          <div class="md-list-item-text" layout="column">
+            <h3>{{ member.name }}</h3>
+            <h4>{{ member.role }}</h4>
+          </div>
+          <md-divider ng-if="!$last"></md-divider>
+        </md-list-item>
+      </md-virtual-repeat-container>
+    </md-list>
+
+  </div>
+</div>

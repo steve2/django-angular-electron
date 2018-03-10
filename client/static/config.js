@@ -22,7 +22,21 @@ function Config ($httpProvider, $resourceProvider, $locationProvider, $mdTheming
   $locationProvider.html5Mode({ enabled: true, requireBase: false });
   $mdThemingProvider.theme('default')
     .primaryPalette('blue')
-    .accentPalette('blue-grey')
+    // .accentPalette('indigo')
+    // .accentPalette('red')
+    // .accentPalette('light-green')
+    // .accentPalette('light-blue')
+    // .accentPalette('purple')
+    // .accentPalette('teal')
+    // .accentPalette('cyan')
+    // .accentPalette('yellow')
+    // .accentPalette('amber')
+    // .accentPalette('light-green')
+    // .accentPalette('deep-purple')
+    .accentPalette('orange')
+    // .accentPalette('brown')
+    // .accentPalette('blue-grey')
+    .warnPalette('red')
     .dark();
 }
 

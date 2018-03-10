@@ -11,14 +11,38 @@
       </md-card-title-media>
   
       <md-card-title-text>
-        <span class="md-headline">{{ user.username }}</span>
-        <span class="md-subhead" ng-show="user.is_staff">Administrator</span>
-        <span class="md-subhead" ng-hide="user.is_staff">Member</span>
-        <span class="md-subhead">{{ user.profile.rank }}</span>
-        <md-card-actions layout="row" layout-align="end center">
-          <md-button class="md-raised md-accent" ng-click="controls.logout()">
-            Logout
-          </md-button>
+        <span class="md-headline">
+          {{ user.username }}
+        </span>
+        <span class="md-subhead" ng-show="user.is_staff">
+          Administrator since {{ formatDate(user.date_joined) }}
+        </span>
+        <span class="md-subhead" ng-hide="user.is_staff">
+          Member since {{ formatDate(user.date_joined) }}
+        </span>
+        <span class="md-subhead">
+          {{ user.profile.rank }}
+        </span>
+        <span class="md-subhead">
+          Last active: {{ formatDate(user.last_login) }}
+        </span>
+        <div class="fullwidth mb-med mt-med">
+          <md-divider></md-divider>
+        </div>
+        <md-card-actions layout="row" layout-align="center center" class="fullwidth">
+          <div layout="row" layout-align="start center" class="fullwidth">
+            <md-button class="md-raised md-icon-button md-primary">
+                <i class="material-icons">message</i>
+            </md-button>
+            <md-button class="md-raised md-icon-button md-primary" ng-click="addFriends($event)">
+              <i class="material-icons">person_add</i>
+            </md-button>
+          </div>
+          <div layout="row" layout-align="end center" class="fullwidth">
+            <md-button class="md-raised md-warn" ng-click="controls.logout()">
+              LOGOUT
+            </md-button>
+          </div>
         </md-card-actions>
       </md-card-title-text>
   

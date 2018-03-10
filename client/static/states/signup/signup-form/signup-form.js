@@ -19,9 +19,9 @@ SignupFormController.$inject = ['$scope'];
 function SignupFormController ($scope) {
   var ct = $scope;
 
-  ct.email = null;
-  ct.username = null;
-  ct.password = null;
+  // ct.email = null;
+  // ct.username = null;
+  // ct.password = null;
   
 }
 

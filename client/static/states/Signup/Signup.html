@@ -10,7 +10,9 @@
   <div layout-fill ng-hide="signup.loading"
     layout="column" layout-align="center center">
 
-    <h1 class="md-display-2">Signup</h1>
+    <div class="fullwidth" layout="row" layout-align="center">
+      <h1 class="md-display-2">Signup</h1>
+    </div>
 
     <div class="fullwidth">
       <md-divider></md-divider>
@@ -25,11 +27,11 @@
       <md-divider class="mt-3"></md-divider>
     </div>
 
-    <div layout="column" layout-align="center center">
+    <div layout="column" layout-align="center center" class="fullwidth">
       <div class="mt-2">
         Already have credentials?
       </div>
-      <md-button class="md-raised md-accent mt-1" ui-sref="root.login">
+      <md-button class="md-raised md-warn mt-1" ui-sref="root.login">
         LOGIN
       </md-button>
     </div>
