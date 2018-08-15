@@ -49,6 +49,11 @@ def _main():
     parser.add_argument('--skip-client', action='store_true')
     args = parser.parse_args()
 
+    # Install dependencies.
+    _run_command('pip install virtualenv')
+    _run_command('npm install -g bower')
+    _run_command('npm install -g less')
+
     try:
         # Server setup.
         if not args.skip_server:
