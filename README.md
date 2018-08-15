@@ -2,7 +2,16 @@
 
 ### Setup
 
-Prior to developing, you may need to run `setup.py`. 
+Prior to developing, you may need to run `setup.py`.
+
+This requires:
+  * Python 3.4
+  * Node.js (for `npm`)
+  
+The setup script automatically installs these utilities:
+  * `virtualenv`
+  * `bower`
+  * `lessc`
 
 For the server, this will:
   * initialize a virtual environment
