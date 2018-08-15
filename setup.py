@@ -2,10 +2,7 @@
 Runs the application server and client modules.
     Requirements:
         - python34
-        - virtualenv (pip install virtualenv)
         - npm
-        - bower (npm install -g bower)
-        - lessc (npm install -g lessc)
 """
 
 from threading import Thread
