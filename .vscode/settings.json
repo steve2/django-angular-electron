@@ -1,4 +1,8 @@
 {
     "python.venvPath": "server\\env",
-    "python.pythonPath": "server\\env\\Scripts\\python.exe"
+    "python.pythonPath": "server\\env\\Scripts\\python.exe",
+    "search.exclude": {
+        "**/node_modules": false,
+        "**/bower_components": false
+      },
 }
