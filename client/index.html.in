@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app="app">
+<head>
+  <!-- The <base> tag needs to be set to the URL of the active site.
+      For debugging this would typically be the loopback, but for production
+      it needs to be the "public" production site address. -->
+  <base href="{{ base }}" />
+
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="{{ static }}/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="{{ static }}/styles/site.css" />
+
+  <!-- Font Awesome CDN -->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.1/js/all.js"></script>
+
+  <title>App Title</title>
+</head>
+<body>
+  <div ui-view></div>
+
+  <!-- Electron requires additional setup for JQuery to allow other scripts to recognize it. -->
+  <!-- Related StackOverflow: https://stackoverflow.com/questions/32621988/electron-jquery-is-not-defined -->
+  <script type="text/javascript">if (typeof module === 'object') { window.module = module; module = undefined; }</script>
+  <script type="text/javascript" src="{{ static }}/bower_components/jquery/dist/jquery.js"></script>
+
+  <script type="text/javascript" src="{{ static }}/bower_components/moment/moment.js"></script>
+  <script type="text/javascript" src="{{ static }}/bower_components/popper.js/dist/umd/popper.js"></script>
+  <script type="text/javascript" src="{{ static }}/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+
+  <script type="text/javascript" src="{{ static }}/bower_components/angular/angular.js"></script>
+  <script type="text/javascript" src="{{ static }}/bower_components/angular-resource/angular-resource.js"></script>
+  <script type="text/javascript" src="{{ static }}/bower_components/angular-cookies/angular-cookies.js"></script>
+  <script type="text/javascript" src="{{ static }}/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  
+  <script type="text/javascript" src="{{ static }}/electron.js"></script>
+  <script type="text/javascript" src="{{ static }}/config.js"></script>
+  <script type="text/javascript" src="{{ static }}/router.js"></script>
+
+  <script type="text/javascript" src="{{ static }}/modules/djoser/djoser.main.js"></script>
+  <script type="text/javascript" src="{{ static }}/modules/djoser/djoser.service.js"></script>
+
+  <script type="text/javascript" src="{{ static }}/services/User.js"></script>
+
+  <script type="text/javascript" src="{{ static }}/states/root.js"></script>
+  <script type="text/javascript" src="{{ static }}/states/dashboard/dashboard.js"></script>
+  <script type="text/javascript" src="{{ static }}/states/dashboard/user-info/user-info.js"></script>
+  <script type="text/javascript" src="{{ static }}/states/login/login.js"></script>
+  <script type="text/javascript" src="{{ static }}/states/login/login-form/login-form.js"></script>
+  <script type="text/javascript" src="{{ static }}/states/signup/signup.js"></script>
+  <script type="text/javascript" src="{{ static }}/states/signup/signup-form/signup-form.js"></script>
+
+  <!-- Part of JQuery setup for Electron. -->
+  <script type="text/javascript">if (window.module) module = window.module</script>
+</body>
+</html>

@@ -2,6 +2,8 @@ server/env/*
 server/db.sqlite3
 server/static/*
 server/2fa.settings
+client/index.html
+client/index.electron.html
 client/node_modules/*
 client/static/bower_components/*
 *.pyc

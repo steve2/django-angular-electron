@@ -1,0 +1,5 @@
+<div class="wrapper" ng-class="class">
+  <label ng-class="{ 'text-danger': {{ error }} }"></label>
+  <label class="text-danger" ng-show="error"><i>{{ error[0] }}</i></label>
+  <input type="text" class="form-control" ng-model="model" />
+</div>

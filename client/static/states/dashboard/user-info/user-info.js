@@ -3,20 +3,20 @@
 
 angular
   .module("app")
-  .directive("userInformation", UserInformation);
+  .directive("userInfo", UserInfo);
 
-UserInformation.$inject = [];
-function UserInformation () {
+UserInfo.$inject = [];
+function UserInfo () {
   return {
     restrict: 'E',
     scope: { user: '=' },
-    controller: UserInformationController,
-    templateUrl: "static/states/dashboard/info/info.html"
+    controller: UserInfoController,
+    templateUrl: "static/states/dashboard/user-info/user-info.html"
   };
 }
 
-UserInformationController.$inject = ['$scope'];
-function UserInformationController ($scope) {
+UserInfoController.$inject = ['$scope'];
+function UserInfoController ($scope) {
   var ct = $scope;
 
   ct.timeFromNow = function (date) {

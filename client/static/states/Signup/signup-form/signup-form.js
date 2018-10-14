@@ -11,7 +11,7 @@ function SignupForm () {
     restrict: 'E',
     scope: {},
     controller: SignupFormController,
-    templateUrl: "static/states/signup/form/form.html"
+    templateUrl: "static/states/signup/signup-form/signup-form.html"
   };
 }
 
