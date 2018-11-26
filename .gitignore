@@ -4,6 +4,7 @@ server/static/*
 server/2fa.settings
 client/index.html
 client/index.electron.html
+client/static/styles/imports.less
 client/node_modules/*
 client/static/bower_components/*
 *.pyc

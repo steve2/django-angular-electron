@@ -3,10 +3,9 @@
     - Compiles an `imports.less` file that imports project styles.
     - Compiles `site.less` (includes `imports.less`) into a single `site.css` file.
 """
-from jinja2 import Template
 import os
 
-
+from jinja2 import Template
 
 
 # The root directory of the client (directory of this file).
@@ -17,7 +16,8 @@ LESS_DIR = os.path.join(CLIENT_DIR, 'static', 'styles')
 
 # Directories to search for LESS imports.
 LESS_IMPORT_DIRS = [
-    os.path.join(CLIENT_DIR, 'static', 'states')
+    os.path.join(CLIENT_DIR, 'static', 'states'),
+    os.path.join(CLIENT_DIR, 'static', 'widgets')
 ]
 
 
@@ -35,11 +35,11 @@ def compile_less_imports():
     """
     imports = []
     for importdir in LESS_IMPORT_DIRS:
-        for (dir, subdirs, files) in os.walk(importdir):
+        for (folder, subfolders, files) in os.walk(importdir):
             for file in files:
                 name, ext = os.path.splitext(file)
                 if ext == '.less':
-                    imports.append(os.path.join(dir, file))
+                    imports.append(os.path.join(folder, file))
     return imports
 
 
