@@ -22,16 +22,20 @@
                 </span>
               </span>
             </h1>
-            <user-info user="user"></user-info>
+            <h6>
+              Joined {{ dashboard.timeFromNow(user.date_joined) }}
+              <small>on {{ dashboard.formatDate(user.date_joined) }}</small>
+            </h6>
+            <div class="controls mt-4">
+              <button class="btn btn-dark" ng-click="dashboard.logout()">
+                Logout
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
     <hr class="mt-0">
-    <div class="container text-right">
-      <button class="btn btn-default" ng-click="dashboard.logout()">
-        Logout
-      </button>
     </div>
   </div>
   <div class="loading table" ng-show="dashboard.loading">

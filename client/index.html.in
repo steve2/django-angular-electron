@@ -43,7 +43,6 @@
 
   <script type="text/javascript" src="{{ static }}/states/root.js"></script>
   <script type="text/javascript" src="{{ static }}/states/dashboard/dashboard.js"></script>
-  <script type="text/javascript" src="{{ static }}/states/dashboard/user-info/user-info.js"></script>
   <script type="text/javascript" src="{{ static }}/states/login/login.js"></script>
   <script type="text/javascript" src="{{ static }}/states/login/login-form/login-form.js"></script>
   <script type="text/javascript" src="{{ static }}/states/signup/signup.js"></script>

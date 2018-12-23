@@ -22,8 +22,7 @@ LESS_IMPORT_DIRS = [
 
 
 def _run_command(command):
-    """Run a system command and print the output.
-    """
+    """Run a system command and print the output."""
     out = os.system(command)
     print('%s [%d]' % (command, out))
     if out is not 0: # Raise an exception if the command fails.
@@ -31,8 +30,7 @@ def _run_command(command):
 
 
 def compile_less_imports():
-    """Search and compile LESS dependencies.
-    """
+    """Search and compile LESS dependencies."""
     imports = []
     for importdir in LESS_IMPORT_DIRS:
         for (folder, subfolders, files) in os.walk(importdir):
@@ -43,8 +41,16 @@ def compile_less_imports():
     return imports
 
 
+def compile_less():
+    """Compile LESS styles into single CSS file."""
+    less_path = os.path.join(LESS_DIR, 'site.less')
+    css_path = os.path.join(LESS_DIR, 'site.css')
+    _run_command('lessc %s %s' % (less_path, css_path))
+
+
 def write_imports(imports):
-    """Creates `imports.less` and defines LESS imports
+    """
+    Creates `imports.less` and defines LESS imports
     retrieved by the `compile_less_imports()` function.
     """
     path = os.path.join(LESS_DIR, 'imports.less')
@@ -60,7 +66,9 @@ def write_imports(imports):
 
 
 def render_html_index():
-    """Renders `index.html.in` with Jinja2. Generates two files,
+    """
+    Renders HTML index file as a Jinja2 template.
+    Renders `index.html.in` with Jinja2.  Generates two files,
     `index.html` and` index.electron.html`.
     """
     template_path = os.path.join(CLIENT_DIR, 'index.html.in')
@@ -80,14 +88,6 @@ def render_html_index():
         rendered = Template(contents).render(static='static', base=os.path.join(CLIENT_DIR, ''))
         with open(index_elec_path, 'w+') as index_elec_file:
             index_elec_file.write(rendered)
-
-
-def compile_less():
-    """Compile LESS styles into single CSS file.
-    """
-    less_path = os.path.join(LESS_DIR, 'site.less')
-    css_path = os.path.join(LESS_DIR, 'site.css')
-    _run_command('lessc %s %s' % (less_path, css_path))
 
 
 if __name__ == '__main__':

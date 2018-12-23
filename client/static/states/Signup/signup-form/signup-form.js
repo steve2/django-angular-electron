@@ -67,6 +67,8 @@ function SignupFormController ($scope, $state, $stateParams, $djoser) {
           ct.errors.username = error.data.username[0];
         if (error.data.password != null)
           ct.errors.password = error.data.password[0];
+        if (error.data.email != null)
+          ct.errors.email = error.data.email[0];
       }
     );
   }

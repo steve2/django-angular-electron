@@ -11,7 +11,6 @@ class Profile(models.Model):
     live_location = models.CharField(max_length=64, blank=True)
     from_location = models.CharField(max_length=64, blank=True)
     birthdate = models.DateField(null=True, blank=True)
-    rank = models.CharField(max_length=32, blank=True, default='Peon')
 
 
 @receiver(post_save, sender=User)

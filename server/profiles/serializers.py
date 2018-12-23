@@ -8,7 +8,7 @@ class ProfileSerializer(serializers.ModelSerializer):
     """
     class Meta:
         model = Profile
-        fields = ('about', 'from_location', 'live_location', 'birthdate', 'rank')
+        fields = ('about', 'from_location', 'live_location', 'birthdate')
 
 class UserSerializer(serializers.ModelSerializer):
     """
@@ -36,6 +36,5 @@ class UserSerializer(serializers.ModelSerializer):
         profile.from_location = profile_data.get('from_location', profile.from_location)
         profile.live_location = profile_data.get('live_location', profile.live_location)
         profile.birthdate = profile_data.get('birthdate', profile.birthdate)
-        profile.rank = profile_data.get('rank', profile.rank)
         profile.save()
         return instance

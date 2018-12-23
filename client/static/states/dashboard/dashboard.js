@@ -11,6 +11,14 @@ function DashboardController ($timeout, $http, $state, $stateParams, $djoser) {
 
   ct.loading = null;
   ct.logout = _logout;
+  
+  ct.timeFromNow = function (date) {
+    return moment(date).fromNow();
+  };
+
+  ct.formatDate = function (date) {
+    return moment(date).format('LL');
+  };
 
   function _logout() {
     ct.loading = {};
