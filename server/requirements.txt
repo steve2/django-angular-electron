@@ -24,6 +24,7 @@ oauthlib==2.0.6
 olefile==0.44
 phonenumberslite==8.8.5
 pycodestyle==2.4.0
+pyflakes==2.0.0
 PyJWT==1.5.3
 pylint==1.7.4
 PySocks==1.6.7
