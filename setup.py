@@ -56,7 +56,7 @@ def upgrade_pip_version():
 
 def django_migrations():
     """
-    Skip the Django database migrations.
+    Perform Django database migrations.
     Raises:
         RuntimeError - The Django {migrate} command failed (see console).
     """
@@ -72,7 +72,8 @@ def create_django_superuser():
     run_command('%s manage.py createsuperuser' % PYTHON)
 
 
-def main(skip_server, skip_client, skip_venv, skip_pip, skip_superuser):
+def main(skip_server, skip_client, skip_venv,
+         skip_pip, skip_migrate, skip_superuser):
     """
     Performs steps to setup the development environment.
     Args:
@@ -80,6 +81,7 @@ def main(skip_server, skip_client, skip_venv, skip_pip, skip_superuser):
         skip_client - Skip the client setup.
         skip_venv - Skip Python virtual environment setup.
         skip_pip - Skip "pip" upgrade.
+        skip_migrate - Skip Django migration step.
         skip_superuser - Skip Django superuser creation.
     Raises:
         RuntimeError - A setup command failed (see console).
@@ -108,6 +110,7 @@ def main(skip_server, skip_client, skip_venv, skip_pip, skip_superuser):
             else:
                 print('Skipping pip update.')
 
+            # Install Python packages to server virtual environment.
             run_command('%s install -r requirements.txt' % PIP)
 
             # Django migrations.
