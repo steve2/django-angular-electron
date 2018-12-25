@@ -8,7 +8,7 @@ This requires:
   * Python 3.4
   * Node.js (for `npm`)
   
-The setup script automatically installs these utilities:
+The setup script installs:
   * `virtualenv`
   * `bower`
   * `lessc`

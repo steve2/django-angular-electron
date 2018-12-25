@@ -1,12 +1,21 @@
 from threading import Thread
-import argparse
+from build import build
 import os
+import argparse
+import logging
 
 from shared import *
 
 
 # The port the Django server listens on.
 SERVER_PORT = 8080
+
+
+# Setup logging settings.
+logging.basicConfig(
+    level=logging.WARNING,
+    format='%(levelname)s:%(message)s'
+)
 
 
 """
@@ -40,15 +49,6 @@ def run_electron():
     run_command('%s %s' % (electron_path, application_path))
 
 
-def build_client():
-    """
-    Runs the client build script.
-    Raises:
-        RuntimeError - The client build script failed.
-    """
-    run_command('python %s' % os.path.join(ROOT_DIR, 'client', 'build.py'))
-
-
 def main(server_only=False):
     """
     Builds the project and starts a Django server and Electron-based client.
@@ -59,7 +59,7 @@ def main(server_only=False):
         RuntimeError - The build process failed, the server failed to start,
             or the Electron-based client application failed to start.
     """
-    build_client()
+    build()
 
     server_thread = Thread(target=run_server)
     server_thread.start()

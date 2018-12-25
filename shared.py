@@ -1,4 +1,5 @@
 import os
+import logging
 
 
 # The root directory of the project (the directory containing this file).
@@ -16,10 +17,7 @@ def run_command(command):
     Raises:
          RuntimeError - Command has non-zero exit code.
     """
-    print('Running "%s"... ' % command, end='')
     out = os.system(command)
-    if out is 0:
-        print('Done.')
-    else:
-        print('Failed.')
+    logging.info('%s [%d]' % (command, out))
+    if out is not 0:
         raise RuntimeError('Command "%s" failed.' % command)
