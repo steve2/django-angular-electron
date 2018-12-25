@@ -77,12 +77,12 @@ def main(skip_server, skip_client, skip_venv,
     """
     Performs steps to setup the development environment.
     Args:
-        skip_server - Skip the server setup.
-        skip_client - Skip the client setup.
-        skip_venv - Skip Python virtual environment setup.
-        skip_pip - Skip "pip" upgrade.
-        skip_migrate - Skip Django migration step.
-        skip_superuser - Skip Django superuser creation.
+        skip_server (bool) - Skip the server setup.
+        skip_client (bool) - Skip the client setup.
+        skip_venv (bool) - Skip Python virtual environment setup.
+        skip_pip (bool) - Skip "pip" upgrade.
+        skip_migrate (bool) - Skip Django migration step.
+        skip_superuser (bool) - Skip Django superuser creation.
     Raises:
         RuntimeError - A setup command failed (see console).
     TODO: 
@@ -99,7 +99,7 @@ def main(skip_server, skip_client, skip_venv,
             set_directory('server')
 
             # Initialize virtual environment.
-            if not 'skip_venv':
+            if not skip_venv:
                 init_virtual_env('env')
             else:
                 print('Skipping virtual environment setup.')
@@ -147,12 +147,12 @@ if __name__ == '__main__':
         'done with options `--skip-venv` and `--skip-superuser`.'
     parser = argparse.ArgumentParser(description=description,
                                      formatter_class=RawTextHelpFormatter)
-    parser.add_argument('--skip-venv', action='store_true')
-    parser.add_argument('--skip-pip', action='store_true')
-    parser.add_argument('--skip-migrate', action='store_true')
-    parser.add_argument('--skip-superuser', action='store_true')
-    parser.add_argument('--skip-server', action='store_true')
-    parser.add_argument('--skip-client', action='store_true')
+    parser.add_argument('--skip-venv', action='store_true', default=False)
+    parser.add_argument('--skip-pip', action='store_true', default=False)
+    parser.add_argument('--skip-migrate', action='store_true', default=False)
+    parser.add_argument('--skip-superuser', action='store_true', default=False)
+    parser.add_argument('--skip-server', action='store_true', default=False)
+    parser.add_argument('--skip-client', action='store_true', default=False)
     args = parser.parse_args()
     main(
         skip_server=args.skip_server,
