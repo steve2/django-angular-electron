@@ -1,8 +1,28 @@
 from jinja2 import Template
 import os
 import logging
+import argparse
 
 from shared import *
+
+
+# The root directory of the client (directory of this file).
+CLIENT_DIR = os.path.join(ROOT_DIR, 'client')
+
+# Directory with important LESS files.
+LESS_DIR = os.path.join(CLIENT_DIR, 'static', 'styles')
+LESS_IMPORTS_PATH = os.path.join(LESS_DIR, 'imports.less')
+
+# Directories to search for LESS imports.
+LESS_IMPORT_DIRS = [
+    os.path.join(CLIENT_DIR, 'static', 'states'),
+    os.path.join(CLIENT_DIR, 'static', 'widgets')
+]
+
+# HTML index files are generated from a Jinja2 template.
+TEMPLATE_INDEX_PATH = os.path.join(CLIENT_DIR, 'index.html.in')
+WEB_INDEX_PATH = os.path.join(CLIENT_DIR, 'index.html')
+ELECTRON_INDEX_PATH = os.path.join(CLIENT_DIR, 'index.electron.html')
 
 
 """
@@ -18,19 +38,6 @@ Server application build steps:
 """
 
 
-# The root directory of the client (directory of this file).
-CLIENT_DIR = os.path.join(ROOT_DIR, 'client')
-
-# Directory with important LESS files.
-LESS_DIR = os.path.join(CLIENT_DIR, 'static', 'styles')
-
-# Directories to search for LESS imports.
-LESS_IMPORT_DIRS = [
-    os.path.join(CLIENT_DIR, 'static', 'states'),
-    os.path.join(CLIENT_DIR, 'static', 'widgets')
-]
-
-
 def render_html_templates():
     """
     Renders HTML index template with Jinja2.
@@ -38,31 +45,27 @@ def render_html_templates():
         * {index.html}
         * {index.electron.html}
     """
-    template_path = os.path.join(CLIENT_DIR, 'index.html.in')
-    index_path = os.path.join(CLIENT_DIR, 'index.html')
-    index_elec_path = os.path.join(CLIENT_DIR, 'index.electron.html')
-
     # Delete previous output files if they exist.
-    if os.path.exists(index_path):
-        os.remove(index_path)
-    if os.path.exists(index_elec_path):
-        os.remove(index_elec_path)
+    if os.path.exists(WEB_INDEX_PATH):
+        os.remove(WEB_INDEX_PATH)
+    if os.path.exists(ELECTRON_INDEX_PATH):
+        os.remove(ELECTRON_INDEX_PATH)
 
-    with open(template_path) as template_file:
+    with open(TEMPLATE_INDEX_PATH) as template_file:
         contents = template_file.read()
 
         # Render web based HTML index.
         rendered = Template(contents).render(static='/static', base='/')
-        with open(index_path, 'w+') as index_file:
+        with open(WEB_INDEX_PATH, 'w+') as index_file:
             index_file.write(rendered)
-        logging.info('Created %s.' % index_path)
+        logging.info('Created %s.' % WEB_INDEX_PATH)
 
         # Render Electron based HTML index.
         rendered = Template(contents).render(
             static='static', base=os.path.join(CLIENT_DIR, ''))
-        with open(index_elec_path, 'w+') as index_elec_file:
+        with open(ELECTRON_INDEX_PATH, 'w+') as index_elec_file:
             index_elec_file.write(rendered)
-        logging.info('Created %s.' % index_elec_path)
+        logging.info('Created %s.' % ELECTRON_INDEX_PATH)
 
 
 def find_less_imports():
@@ -86,16 +89,15 @@ def create_imports_less():
     Creates final {imports.less} file.
     """
     imports = find_less_imports()
-    path = os.path.join(LESS_DIR, 'imports.less')
-    if os.path.exists(path):
-        os.remove(path)
-    with open(path, 'w+') as imports_file:
+    if os.path.exists(LESS_IMPORTS_PATH):
+        os.remove(LESS_IMPORTS_PATH)
+    with open(LESS_IMPORTS_PATH, 'w+') as imports_file:
         for less in imports:
             less_path = less.replace(
                 os.path.join(CLIENT_DIR, 'static'), '..')
             less_path = less_path.replace("\\", "/")
             imports_file.write("@import \"%s\";\n" % less_path)
-    logging.info('Created %s.' % path)
+    logging.info('Created %s.' % LESS_IMPORTS_PATH)
 
 
 def compile_less_styles():
@@ -118,5 +120,32 @@ def build():
     compile_less_styles()
 
 
+def clean():
+    """
+    Cleans build files from the project.
+    """
+    # These are created by `render_html_templates`.
+    if os.path.isfile(ELECTRON_INDEX_PATH):
+        os.remove(ELECTRON_INDEX_PATH)
+        logging.info('Deleted %s.' % ELECTRON_INDEX_PATH)
+    if os.path.isfile(WEB_INDEX_PATH):
+        os.remove(WEB_INDEX_PATH)
+        logging.info('Deleted %s.' % WEB_INDEX_PATH)
+    # This is created by `create_imports_less`.
+    if os.path.isfile(LESS_IMPORTS_PATH):
+        os.remove(LESS_IMPORTS_PATH)
+        logging.info('Deleted %s.' % LESS_IMPORTS_PATH)
+
+
 if __name__ == '__main__':
-    build()
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(levelname)s:%(message)s'
+    )
+    parser = argparse.ArgumentParser(description='Builds the project.')
+    parser.add_argument('--clean', action='store_true', dest='clean')
+    args = parser.parse_args()
+    if args.clean:
+        clean()
+    else:
+        build()

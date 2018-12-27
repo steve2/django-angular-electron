@@ -11,13 +11,6 @@ from shared import *
 SERVER_PORT = 8080
 
 
-# Setup logging settings.
-logging.basicConfig(
-    level=logging.WARNING,
-    format='%(levelname)s:%(message)s'
-)
-
-
 """
 Starts a Django server (on {SERVER_PORT}) and the Electron-based client.
 
@@ -70,9 +63,12 @@ def main(server_only=False):
 
 
 if __name__ == '__main__':
+    logging.basicConfig(
+        level=logging.WARNING,
+        format='%(levelname)s:%(message)s'
+    )
     parser = argparse.ArgumentParser(
-        description='Starts the Django server (on {SERVER_PORT}) '
-                    'and the Electron-based client.')
+        description='Starts the Django server and the Electron-based client.')
     parser.add_argument(
         '--server-only', action='store_true', dest='server_only')
     args = parser.parse_args()
