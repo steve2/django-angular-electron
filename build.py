@@ -2,6 +2,7 @@ from jinja2 import Template
 import os
 import logging
 import argparse
+import json
 
 from shared import *
 
@@ -126,7 +127,10 @@ def build(electron_app=False):
     """
     if electron_app:
         # This takes some time, be careful how often we build.
-        build_electron_app(os.path.basename(ROOT_DIR))
+        package_json_path = os.path.join(ROOT_DIR, 'client', 'package.json')
+        with open(package_json_path) as package_json:
+            metadata = json.load(package_json)
+        build_electron_app(metadata['name'])
     else:
         render_html_templates()
         create_imports_less()
