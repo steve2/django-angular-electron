@@ -120,14 +120,17 @@ def compile_less_styles():
     run_command('lessc %s %s' % (less_path, css_path))
 
 
-def build():
+def build(electron_app=False):
     """
     Build the project.
     """
-    render_html_templates()
-    create_imports_less()
-    compile_less_styles()
-    build_electron_app(os.path.basename(ROOT_DIR))
+    if electron_app:
+        # This takes some time, be careful how often we build.
+        build_electron_app(os.path.basename(ROOT_DIR))
+    else:
+        render_html_templates()
+        create_imports_less()
+        compile_less_styles()
 
 
 def clean():
@@ -153,9 +156,10 @@ if __name__ == '__main__':
         format='%(levelname)s:%(message)s'
     )
     parser = argparse.ArgumentParser(description='Builds the project.')
-    parser.add_argument('--clean', action='store_true', dest='clean')
+    parser.add_argument('--clean', action='store_true')
+    parser.add_argument('--electron', action='store_true')
     args = parser.parse_args()
     if args.clean:
         clean()
     else:
-        build()
+        build(electron_app=args.electron)
