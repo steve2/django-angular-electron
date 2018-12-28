@@ -21,17 +21,6 @@ Requirements:
 """
 
 
-def set_directory(subdir):
-    """
-    Sets the working directory to {subdir}.
-    Raises:
-        OSError - Command to change directories is not available.
-    """
-    working_dir = os.path.join(ROOT_DIR, subdir)
-    os.chdir(working_dir)
-    print('Current directory: %s' % working_dir)
-
-
 def init_virtual_env(subdir):
     """
     Initializes a Python virtual environment.
@@ -88,13 +77,20 @@ def main(skip_server, skip_client, skip_venv,
     TODO: 
         - Make steps idempotent and remove function arguments.
     """
-    # Install dependencies.
+    # The `virtualenv` tools create a virtual environment for the server.
+    # This environment contains 3rd party dependencies that are needed.
     run_command('pip install virtualenv')
+
+    # The `bower` tool is used as a package manager for the client application.
     run_command('npm install -g bower')
+
+    # The `less` compiler is used when building client style definitions.
     run_command('npm install -g less')
 
+    # The `electron-packager` tool builds the Electron client for distribution.
+    run_command('npm install -g electron-packager')
+
     try:
-        # Server setup.
         if not skip_server:
             set_directory('server')
 

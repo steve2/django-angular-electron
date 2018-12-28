@@ -38,7 +38,7 @@ def run_electron():
         RuntimeError - Electron-based client failed to start.
     """
     electron_path = os.path.join(
-        ROOT_DIR, 'client', 'node_modules', 'electron-prebuilt', 'dist', 'electron.exe')
+        ROOT_DIR, 'client', 'node_modules', 'electron', 'dist', 'electron.exe')
     application_path = os.path.join(ROOT_DIR, 'client')
     run_command('%s %s' % (electron_path, application_path))
 

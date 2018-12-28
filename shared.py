@@ -6,7 +6,18 @@ import logging
 ROOT_DIR = os.path.dirname(os.path.realpath(__file__))
 
 
-__all__ = ['ROOT_DIR', 'run_command']
+__all__ = ['ROOT_DIR', 'run_command', 'set_directory']
+
+
+def set_directory(subdir):
+    """
+    Sets the working directory to {subdir}.
+    Raises:
+        OSError - Command to change directories is not available.
+    """
+    working_dir = os.path.join(ROOT_DIR, subdir)
+    os.chdir(working_dir)
+    print('Current directory: %s' % working_dir)
 
 
 def run_command(command):

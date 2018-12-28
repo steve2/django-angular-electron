@@ -38,6 +38,15 @@ Server application build steps:
 """
 
 
+def build_electron_app(application_name):
+    """Builds the Electron client application.
+    Raises:
+        RuntimeError: The `electron-packager` command failed.
+    """
+    set_directory('')  # Go to the root directory.
+    run_command('electron-packager .\client "%s"' % application_name)
+
+
 def render_html_templates():
     """
     Renders HTML index template with Jinja2.
@@ -118,6 +127,7 @@ def build():
     render_html_templates()
     create_imports_less()
     compile_less_styles()
+    build_electron_app(os.path.basename(ROOT_DIR))
 
 
 def clean():
