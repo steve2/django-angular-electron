@@ -27,9 +27,19 @@ For the client, this will:
 
 Once the development environment is setup, the application can be started by running `run.py`. This should start a Django server and an Electron app. The Django server can be reached in a browser at the address `http://localhost:8080/`.
 
-### Packaging Electron App
+### Building
 
-The `build.py` script can be invoked with the `--electron` option to build the Electron client application binary package.
+The build process currently involves:
+
+* Renders distinct HTML index files for the Web and Electron applications.
+* Creating an `imports.less` file for client style definitions.
+* Compiling the `site.less` into a final `site.css` file.
+
+If `--electron` is specified, the Electron client binary package is built instead.
+
+### Packaging the Electron Client Application
+
+The `build.py` script can be invoked with the `--electron` option to build the Electron client application binary package. This builds a binary package named by the `client/package.json` metadata file.
 
 ```
 python build.py --electron
