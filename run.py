@@ -13,7 +13,7 @@ SERVER_PORT = 8080
 
 
 """
-Starts a Django server (on {SERVER_PORT}) and the Electron-based client.
+Starts a Django server (on {SERVER_PORT}) and the Electron client.
 
 The web client can be viewed with a browser at `http://localhost:{SERVER_PORT}`.
 """
@@ -33,9 +33,9 @@ def run_server():
 
 def run_electron():
     """
-    Starts the Electron-based client.
+    Starts the Electron client.
     Raises:
-        RuntimeError - Electron-based client failed to start.
+        RuntimeError - Electron client failed to start.
     """
     electron_path = os.path.join(
         ROOT_DIR, 'client', 'node_modules', 'electron', 'dist', 'electron.exe')
@@ -45,13 +45,13 @@ def run_electron():
 
 def main(server_only=False):
     """
-    Builds the project and starts a Django server and Electron-based client.
+    Builds the project and starts a Django server and Electron client.
     Keyword args:
         server_only (bool) - If true, only the Django server is started. The
             project is built regardless.
     Raises:
         RuntimeError - The build process failed, the server failed to start,
-            or the Electron-based client application failed to start.
+            or the Electron client application failed to start.
     """
     build()
 
@@ -69,7 +69,7 @@ if __name__ == '__main__':
         format='%(levelname)s:%(message)s'
     )
     parser = argparse.ArgumentParser(
-        description='Starts the Django server and the Electron-based client.')
+        description='Starts the Django server and the Electron client.')
     parser.add_argument(
         '--server-only', action='store_true', dest='server_only')
     args = parser.parse_args()
