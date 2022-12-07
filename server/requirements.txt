@@ -1,7 +1,7 @@
 astroid==1.5.3
 autopep8==1.4
 Babel==2.5.1
-certifi==2017.11.5
+certifi==2022.12.7
 chardet==3.0.4
 colorama==0.3.9
 defusedxml==0.5.0
